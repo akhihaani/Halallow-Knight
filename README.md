@@ -1,31 +1,72 @@
 # Halallow Knight
 
-A client-side [Hollow Knight](https://hollowknight.com) mod that rewords divine and
-"higher being" framing in the game's text into neutral alternatives.
+A client-side [Hollow Knight](https://hollowknight.com) mod that rewords the game's text, replacing
+religious and supernatural framing with neutral alternatives.
 
-It changes **words only**. Bosses, bugs, items, geo, charms, enemies and every other part of the
-game are exactly as Team Cherry made them — the mod never touches gameplay.
+It changes **words only**. Every boss, bug, item, area, ability and piece of geo is exactly as Team
+Cherry made them. Nothing about how the game plays is touched.
 
-> **Status:** working, but shipped with an empty replacement list. Out of the box it runs in
-> *dump mode*, which records the game's text so you can decide what to reword. See
-> [Configuring](#configuring).
+## What it changes
+
+Six areas, **564 of the game's 4,089 text entries**:
+
+| | |
+|---|---|
+| **Divine framing** | gods, worship, prayer, idols, shrines, temples, blessings, blasphemy. *Higher beings* become **luminaries**, *Godhome* becomes **Luminance**, the *Pantheons* become the **Ascents**. |
+| **Magic** | spells, shamans, conjuring, enchantment, hexes, the arcane. *Spells* become **skills**, the *Shaman* becomes the **Adept**. |
+| **SOUL** | the game's core resource becomes **SPARK**. *Soul Catcher* → *Spark Catcher*, *Kingsoul* → *Kingspark*, *Soul Sanctum* → *Spark Spire*. |
+| **Charms** | become **emblems**, since a charm is an object worn for magical protection. *Charm Notch* → *Emblem Notch*. |
+| **Dreams and the dead** | the dream-realm becomes **memory**, the lingering dead become **echoes**, and the *Dream Nail* becomes the **Echo Nail**. *Dreamers* become **Sleepers**. Ghosts, spirits and wraiths are renamed. |
+| **Fate** | lines that claim to *know* the future, hold power over it, or dismiss it. Believing in fate is left alone; only claiming mastery of it is changed. |
+
+The remaining 3,525 entries are untouched, and a great deal was left alone **deliberately** —
+ordinary sleeping and dreaming, *faith* meaning trust, *spirit* meaning courage, `Shade` for its
+shadow imagery. Where a word had several senses, each was judged separately rather than swapped
+wholesale.
+
+> **[REWORDS.md](REWORDS.md) documents every single change**, with before-and-after text, the
+> reasoning behind the non-obvious choices, and everything deliberately left vanilla and why. If
+> you want to know exactly what this does to your game before installing it, read that.
+
+Some examples:
+
+```
+"Higher beings, these words are for you alone."
+→ "Luminaries, these words are for you alone."
+
+"Spells will deplete SOUL. Replenish SOUL by striking enemies."
+→ "Skills will deplete SPARK. Replenish SPARK by striking enemies."
+
+"Lingering dream of a fallen warrior."
+→ "Lingering echo of a fallen warrior."
+
+"Ghost of Hallownest, you possess the strength to enact an end of your choosing."
+→ "Shadow of Hallownest, you possess the strength to enact an end of your choosing."
+```
+
+The wording is one person's choices, not a fixed requirement of the mod. If you want different
+words, [swap them](#using-your-own-wording) — no rebuild needed.
 
 ## How it works
 
 Hollow Knight routes essentially all player-facing text — lore tablets, boss titles, area names,
-menus, dream dialogue — through a single localisation lookup. Halallow Knight hooks that one call
-and returns replacement strings.
+menus, item descriptions — through a single localisation lookup. Halallow Knight hooks that one
+call and returns replacement strings.
 
 That's the entire mod. It hooks **nothing else**: no gameplay logic, no scenes, no entities, no
-PlayMaker/FSM graphs, no game files or assets are modified on disk. Everything happens at runtime,
-in memory, on your machine only.
+PlayMaker/FSM graphs, and no game files or assets are modified on disk. Everything happens at
+runtime, in memory, on your machine only.
 
-Two useful consequences:
+Three consequences worth knowing:
 
-- **It plays well with other mods.** Since it alters nothing but locally displayed text, it has
-  essentially no surface to conflict with. That includes multiplayer mods — reworded text is local
-  to you, so other players are unaffected and nothing changes on the wire.
-- **It's trivially reversible.** Disable or delete it and the text is vanilla again.
+- **It plays well with other mods.** Altering nothing but locally displayed text leaves almost no
+  surface to conflict with. That includes multiplayer mods — the reworded text is local to you, so
+  other players are unaffected and nothing changes on the wire.
+- **It's trivially reversible.** Disable or delete it and the text is vanilla again. Your saves are
+  never touched.
+- **It cannot change mechanics.** Renaming the Dream Nail to the Echo Nail does not stop it
+  entering dreams; renaming charms does not change what equipping them does. This is a change of
+  words, and only words.
 
 ## Requirements
 
@@ -39,8 +80,8 @@ Support for the newer game build is planned once the Modding API supports it.
 
 ## Installing
 
-Download the release folder (or build it yourself, below) and drop `HalallowKnight/` into your
-game's `Mods` folder. The same DLL works on all three platforms.
+Drop the `HalallowKnight/` folder into your game's `Mods` folder. The same DLL works on all three
+platforms.
 
 | OS | `Mods` folder, under `.../steamapps/common/Hollow Knight/` |
 |---|---|
@@ -50,59 +91,68 @@ game's `Mods` folder. The same DLL works on all three platforms.
 
 Lumafly's **manual install** button does this for you on any OS.
 
-The folder should contain `HalallowKnight.dll` and `reword-config.json`. If it loaded, the mod's
-name and version appear in the top-left of the title screen.
+The folder needs `HalallowKnight.dll` and `reword-config.json` together — the DLL alone changes
+nothing, since all the wording lives in the JSON. If it loaded, the mod's name and version appear
+in the top-left of the title screen.
 
-**Back up your saves before first run.** They live in `.../unity.Team Cherry.Hollow Knight/`
-(`%APPDATA%` on Windows, `~/Library/Application Support/` on macOS, `~/.config/` on Linux).
+**Back up your saves before first run**, as with any mod. They live in
+`.../unity.Team Cherry.Hollow Knight/` (`%APPDATA%` on Windows, `~/Library/Application Support/`
+on macOS, `~/.config/` on Linux).
 
-## Configuring
+## Using your own wording
 
-All configuration is `reword-config.json`, next to the DLL.
+Everything the mod says lives in `reword-config.json` next to the DLL. **It's plain JSON — edit it
+and restart the game. No rebuild, no toolchain.**
 
-### 1. Find the text you want to change
+```json
+{
+  "dumpMode": false,
+  "dumpAll": false,
 
-Ship default is `"dumpMode": true`. In this mode the mod **changes nothing** and instead records
-every unique piece of text the game asks for, into `language-dump.tsv` beside the DLL:
+  "exactOverrides": {
+    "Titles|GODHOME_MAIN": "Luminance"
+  },
+
+  "termReplacements": {
+    "Higher beings": "Luminaries",
+    "Godhome": "Luminance"
+  }
+}
+```
+
+- **`termReplacements`** find-and-replace on the original text wherever it appears. Convenient, but
+  they hit *every* string containing the term.
+- **`exactOverrides`** replace one specific entry outright, keyed by `sheet|key`. Precise, with no
+  collateral — use these for names, titles, and any line where a blanket rule would read badly.
+
+Two rules govern them:
+
+1. An exact override **always wins** over term replacements for that entry — and it **bypasses them
+   entirely**, so an override must be written with all your other wording already applied.
+2. Longer terms are applied **first**, so `Godhome` is matched before the `god` inside it.
+
+### Finding the text to change
+
+Set `"dumpAll": true` and launch once. The mod writes **every** entry the game has loaded to
+`language-dump-all.tsv` beside the DLL, so you don't have to reach an area to see its text:
 
 ```
 sheet <TAB> key <TAB> original text
 ```
 
-Play through the content you care about — the file fills as you go. Each entry is recorded once.
+`"dumpMode": true` is the incremental alternative — it changes nothing and records entries as the
+game asks for them, which is useful for finding which key a particular line belongs to. Both are
+off in the shipped config.
 
-Setting `"dumpAll": true` instead writes **every** entry the game has loaded to
-`language-dump-all.tsv` in one go, so you don't have to reach a given area to see its text. It runs
-once per launch and is off by default.
+### Two traps worth knowing
 
-### 2. Write your replacements
+Both of these have caused real bugs in this mod, and both are now checked automatically:
 
-Turn dump mode off and fill in either or both maps:
-
-```json
-{
-  "dumpMode": false,
-
-  "exactOverrides": {
-    "Titles|SOME_KEY": "Your exact replacement text"
-  },
-
-  "termReplacements": {
-    "Higher Beings": "great ones",
-    "Higher Being": "great one"
-  }
-}
-```
-
-- **`exactOverrides`** replace one specific entry outright, keyed by `sheet|key` straight from your
-  dump. Precise, with no collateral — best for names and titles.
-- **`termReplacements`** do a find-and-replace on the original text wherever it appears. Convenient,
-  but they hit every string containing the term, so use them deliberately.
-
-Rules: an exact override always wins over term replacements for the same entry, and longer terms
-are applied first, so `"Higher Being"` is matched before a shorter `"Being"` inside it.
-
-Restart the game to apply changes.
+- **Substring corruption.** Replacement is plain `String.Replace` with no word boundaries, so a
+  rule can fire inside a longer word. A `holy → luminous` rule turns *melancholy* into
+  *melancluminous*. Protect such words with an exact override.
+- **Stale overrides.** An override written before a later rule exists can never be reached by that
+  rule, so renames silently skip it. After any rename, sweep the override texts too.
 
 ## Building from source
 
@@ -123,33 +173,21 @@ dotnet build -c Release -p:HkManaged="/path/to/Hollow Knight/.../Managed"
 Output is `bin/Release/HalallowKnight.dll`. It references the game's assemblies but bundles none of
 them, so nothing proprietary is redistributed.
 
-## What it changes
+## Verification
 
-**[REWORDS.md](REWORDS.md) documents every single change** — each term replacement, each
-individually rewritten line with its before-and-after, the reasoning behind the non-obvious
-choices, and, just as importantly, everything that was deliberately **left alone** and why.
-If you want to know exactly what this mod does to your game before installing it, read that.
+Every change is checked by simulating the mod's own replacement engine over a full dump of the
+game's text, before anything ships:
 
-The shipped wording recasts divine authority as light and brilliance rather than godhood:
+```bash
+python3 tools/gen_rewords.py [path/to/language-dump-all.tsv]
+```
 
-| | |
-|---|---|
-| *higher beings* | *luminaries* |
-| *Godhome* | *Luminance* |
-| *the Pantheons* | *the Ascents* |
-| *Godseeker* | *Lightseeker* |
-| *Spell* | *Skill* |
-| *King's Idol* | *King's Effigy* |
+This regenerates REWORDS.md and reports the entry count alongside four checks, all of which must be
+zero: replacement cascades, substring corruptions, article-agreement errors (`a emblem`,
+`An Primal`), and stale overrides.
 
-> *"**Higher beings**, these words are for you alone."* → *"**Luminaries**, these words are for you alone."*
-
-**564 of the game's 4,089 text entries are altered**; the other 3,525 are untouched. The scheme
-currently covers divine framing and magic. Charms, dreams and the depiction of the dead are noted
-as future work in REWORDS.md.
-
-Every release is verified by simulating the replacement engine over a full dump of the game's text,
-checking that no target word survives unintentionally and that no replacement rule corrupts
-another's output.
+The dump is not committed — it is Team Cherry's text, not ours. Produce your own with
+`"dumpAll": true` as above.
 
 ## Repository layout
 
@@ -157,17 +195,13 @@ another's output.
 src/HalallowKnight/
   HalallowKnight.cs        the mod: hook, dump mode, replacement engine
   HalallowKnight.csproj    net472 build, cross-platform game detection
-  reword-config.json       the shipped replacement list
+  reword-config.json       the shipped wording
 tools/
-  gen_rewords.py           regenerates REWORDS.md from the config, with verification
-REWORDS.md                 every change, and what was left alone
+  gen_rewords.py           regenerates REWORDS.md and runs the verification checks
+REWORDS.md                 every change, and everything left alone, with reasoning
 ```
 
-## Contributing a different wording
+## Credits
 
-The replacement list is just JSON — you do not need to rebuild the mod to change it. Edit
-`reword-config.json` in your installed `Mods/HalallowKnight/` folder and restart the game.
-
-If you are changing the list in the repo, run `python3 tools/gen_rewords.py` afterwards to
-regenerate REWORDS.md. It applies the mod's own algorithm to a full language dump and reports the
-entry count, cascade check and override count, so the document cannot drift from the config.
+Hollow Knight is by [Team Cherry](https://teamcherry.com.au). This mod contains none of their code
+or assets — only a list of words, applied at runtime on your own machine.

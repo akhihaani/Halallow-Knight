@@ -1,13 +1,33 @@
 # Reworded text
 
-Every change Halallow Knight makes, and every deliberate decision *not* to change something.
-Generated against Hollow Knight **1.5.78.11833** — 4,089 localisation entries, of which
+Everything Halallow Knight changes, and everything it deliberately leaves alone.
+
+Generated against Hollow Knight **1.5.78.11833**: 4,089 localisation entries, of which
 **564 are altered** and 3,525 are untouched.
 
-*This file is generated. Run `python3 tools/gen_rewords.py` after editing the config.*
+*This file is generated — run `python3 tools/gen_rewords.py` after editing the config. The counts
+and every check in section 6 come from simulating the mod's own algorithm over a full dump.*
 
-The wording scheme is **Luminaries**: divine authority is recast as light and brilliance rather
-than godhood, keeping Hollow Knight's register intact.
+## What is covered
+
+| area | approach |
+|---|---|
+| **Divine framing** | gods, worship, prayer, idols, shrines, temples, blessings, blasphemy. Divine authority is recast as light: *higher beings* → **luminaries**, *Godhome* → **Luminance**, *Pantheons* → **Ascents** |
+| **Magic** | spells, shamans, conjuring, enchantment, hexes, the arcane. *Spells* → **skills**, *Shaman* → **Adept** |
+| **SOUL** | → **SPARK**, chosen because every compound works: *Spark Catcher*, **Kingspark**, **Worldspark**, *Spark Spire* |
+| **Charms** | → **emblems**, a charm being an object worn for magical protection |
+| **Dreams and the dead** | the realm → **memory**, the lingering dead → **echoes**, *Dream Nail* → **Echo Nail**, *Dreamers* → **Sleepers**. Ghosts, spirits and wraiths renamed |
+| **Fate** | only lines claiming to *know* the future, hold power over it, or dismiss it. Believing in fate is untouched |
+
+## How to read this
+
+- **Section 1** is the term replacements — plain find-and-replace, applied longest-key-first.
+- **Section 2** is the exact overrides: 78 entries rewritten in full, because a term rule
+  would have been wrong or clumsy. Each is listed with its reasoning and its before-and-after text.
+- **Section 3 is the one worth reading if you are judging the mod.** It records what was
+  deliberately **not** changed, and why. Most of the care here went into *not* over-reaching:
+  where a word carried several senses, each was judged separately rather than swapped wholesale.
+- **Section 6** is the verification, all of which must read zero.
 
 ---
 
@@ -139,6 +159,8 @@ like `Godhome` are handled before the bare `god` inside them.
 | `a pantheon` | `an ascent` |
 | `An Arcane` | `A Primal` |
 | `an Arcane` | `a Primal` |
+| `become a dream yourself` | `become a memory yourself` |
+| `The spirit of a dead ancestor` | `The remnant of a dead ancestor` |
 
 ### Dreams, echoes and the dead
 
@@ -174,6 +196,37 @@ like `Godhome` are handled before the bare `god` inside them.
 | `Through dream I travel` | `Through nightmare I travel` |
 | `the flame in dream` | `the flame in nightmare` |
 | `In dreams... Born anew` | `In nightmare... Born anew` |
+| `waking world from our dreams` | `waking world from our memories` |
+| `Such dreams are` | `Such memories are` |
+| `disturb those dreams` | `disturb those memories` |
+| `dreams of Hallownest take shape` | `memories of Hallownest take shape` |
+| `dreams of this old Kingdom` | `memories of this old Kingdom` |
+| `the dreams we leave behind` | `the memories we leave behind` |
+| `way of dreams` | `way of memories` |
+| `most hidden of dreams` | `most hidden of memories` |
+| `the dreams of others` | `the memories of others` |
+| `amongst dreams and the dead` | `amongst memory and the dead` |
+| `to any dream` | `to any memory` |
+| `that old dream` | `that old memory` |
+| `forgotten dream` | `forgotten memory` |
+| `A dream is endless` | `A memory is endless` |
+| `No dream can hide` | `No memory can hide` |
+| `land and dream and devotion` | `land and memory and devotion` |
+| `core of dream and mind` | `core of memory and mind` |
+| `plagues their dreams` | `plagues their minds` |
+| `White Defender's dreams` | `White Defender's memory` |
+| `Dream forgotten` | `Memory forgotten` |
+| `Dreams revered` | `Memories revered` |
+| `expanse of dream in past` | `expanse of nightmare in past` |
+| `lights darkest dream` | `lights darkest night` |
+| `a Dreamgate` | `an Echogate` |
+| `A Dreamgate` | `An Echogate` |
+| `the Wraiths` | `the Shades` |
+| `a spirit that will fly forward` | `a wisp that will fly forward` |
+| `The spirit requires` | `The wisp requires` |
+| `unleash the Spirit` | `unleash the Wisp` |
+| `a more powerful spirit` | `a more powerful wisp` |
+| `May their spirits rest in peace` | `May they rest in peace` |
 
 ### Blessing and fortune
 
@@ -186,44 +239,6 @@ like `Godhome` are handled before the bare `god` inside them.
 | `Blessed` | `Favoured` |
 | `blessed` | `favoured` |
 | ` by fortune` | ` by chance` |
-
-### Other
-
-| original | becomes |
-|---|---|
-| `dreams of Hallownest take shape` | `memories of Hallownest take shape` |
-| `May their spirits rest in peace` | `May they rest in peace` |
-| `a spirit that will fly forward` | `a wisp that will fly forward` |
-| `The spirit of a dead ancestor` | `The remnant of a dead ancestor` |
-| `waking world from our dreams` | `waking world from our memories` |
-| `amongst dreams and the dead` | `amongst memory and the dead` |
-| `land and dream and devotion` | `land and memory and devotion` |
-| `dreams of this old Kingdom` | `memories of this old Kingdom` |
-| `the dreams we leave behind` | `the memories we leave behind` |
-| `expanse of dream in past` | `expanse of nightmare in past` |
-| `become a dream yourself` | `become a memory yourself` |
-| `White Defender's dreams` | `White Defender's memory` |
-| `core of dream and mind` | `core of memory and mind` |
-| `a more powerful spirit` | `a more powerful wisp` |
-| `most hidden of dreams` | `most hidden of memories` |
-| `disturb those dreams` | `disturb those memories` |
-| `the dreams of others` | `the memories of others` |
-| `plagues their dreams` | `plagues their minds` |
-| `lights darkest dream` | `lights darkest night` |
-| `The spirit requires` | `The wisp requires` |
-| `A dream is endless` | `A memory is endless` |
-| `unleash the Spirit` | `unleash the Wisp` |
-| `No dream can hide` | `No memory can hide` |
-| `Such dreams are` | `Such memories are` |
-| `forgotten dream` | `forgotten memory` |
-| `Dream forgotten` | `Memory forgotten` |
-| `that old dream` | `that old memory` |
-| `Dreams revered` | `Memories revered` |
-| `way of dreams` | `way of memories` |
-| `to any dream` | `to any memory` |
-| `a Dreamgate` | `an Echogate` |
-| `A Dreamgate` | `An Echogate` |
-| `the Wraiths` | `the Shades` |
 
 **Notes on specific choices**
 
