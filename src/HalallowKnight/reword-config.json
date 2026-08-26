@@ -37,7 +37,7 @@
     "Relic Dealer|RELICDEALER_IDOL_1": "A King's Effigy, eh?<page>Hallownest's king was an elusive figure, honoured by the citizens. With the king rarely seen, these stood in his place.<page>There's an expert craft to them. Few alive could match this skill.",
     "Relic Dealer|RELICDEALER_IDOL_4": "A King's Effigy?<page>I've often wondered the true visage of the king. Depictions are of an imposing, gleaming figure and a fiercely horned crown.<page>I suspect there's much embellishment in the imagery though. A ruler seeking admiration tends to hide their blemishes. It'd do no good to appear a common bug.",
     "UI|INV_DESC_TRINKET3": "A white effigy depicting the King of Hallownest. The elusive king was seldom seen, so these stood in his place.<br><br>Relic from Hallownest's past. This item now holds little value except for those dedicated to the kingdom's history.",
-    "CP3|PANTHEON_ENTER_0": "Wretch! Thou hast ordained thine own destruction!<br><page>Through trial by combat are We attuned to this Kingdom's greatest beings. By entering this gate thou hast challenged the very Luminaries of this Kingdom!<br><page>Dost thou consider thyself the equal of this ascent, of its masters? Draw thy weapon then, fool of fools, and be undone by thine own arrogance!",
+    "CP3|PANTHEON_ENTER_0": "Wretch! Thou hast invited thine own destruction!<br><page>Through trial by combat are We attuned to this Kingdom's greatest beings. By entering this gate thou hast challenged the very Luminaries of this Kingdom!<br><page>Dost thou consider thyself the equal of this ascent, of its masters? Draw thy weapon then, fool of fools, and be undone by thine own arrogance!",
     "CP3|GODSEEKER_ENGINE_REPEAT_3": "Dost thou understand Our words? Will thee allow thyself to be destroyed by the Luminary of this ascent? Will thee allow Us to resume Our patient attunement?",
     "CP3|NOTE_NAILMASTERS": "\"Luminaries by toil and nail bound,<br>Brothers sworn to guard the weak,<br>Masters of the cherished ground,<br>Ours to find, the ones We seek!\"<br>- Song of the Masters",
     "Journal|NOTE_NAILMASTERS": "\"Luminaries by toil and nail bound,<br>Brothers sworn to guard the weak,<br>Masters of the cherished ground,<br>Ours to find, the ones We seek!\"<br>- Song of the Masters",
@@ -71,7 +71,15 @@
     "Enemy Dreams|NIGHTMARE_GRIMM_GG_1": "Luminaries... bound to this stage...",
     "Map Zones|DREAM_WORLD": "Memory",
     "Achievements|ENDING_C_TITLE": "Wake At Last",
-    "Shaman|SHAMAN_TRAPPED_2": "What is it? Are you wondering about this gate between us? Ohoho! It's a curious thing, but this door will not open until you have slain that creature lying in the heart of the vault.<page>Don't worry about it. I'm sure the memory of my ancestors will be with you."
+    "Shaman|SHAMAN_TRAPPED_2": "What is it? Are you wondering about this gate between us? Ohoho! It's a curious thing, but this door will not open until you have slain that creature lying in the heart of the vault.<page>Don't worry about it. I'm sure the memory of my ancestors will be with you.",
+    "Lore Tablets|WISHING_WELL_INSPECT": "A true servant gives all for the Kingdom.<br>Let Hallownest's Pale King lighten your purse.",
+    "Lore Tablets|WP_THRONE_01": "No blazing kin. Only one light shall shine against the dark.<br>The Wyrm becomes beacon, minds expanded, to gather, to build.<br>Endurance in purpose and charge in progeny cursed.",
+    "Lore Tablets|FUNG_TAB_01": "Warily shall we accept the terms of the Wyrm.<br>Its foresight shields us.<br>Fate and Future we shall entwine.",
+    "Zote|PRECEPT_6": "Precept Six: 'Trust Your Own Counsel'.<page>Our elders teach that wisdom comes only with age. I disagree.",
+    "Minor NPC|LITTLE_FOOL_MARK": "To enter a trial, step over to the board and place your mark. From that point on, the trial is yours alone...",
+    "Lore Tablets|FUNG_SHROOM_DREAM": "Pale Wyrm...What good is all that planning, when the end comes regardless?",
+    "Minor NPC|MR_MUSHROOM_4": "...What was called a \"hero\" in its moment may be called something very different after time has passed. <page>The crimes and triumphs of our predecessors echo all around us, don't they?<page>The chains of history that bind us all together... do you really want to break them?",
+    "Relic Dealer|RELICDEALER_JOURNAL_1": "A Wanderer's Journal, eh?<page>Though they're common finds about the kingdom, I much enjoy the deciphering of their text.<page>Read together they paint a morbid tale. It seems few who travel within Hallownest's ruin ever find their way out again."
   },
   "termReplacements": {
     "God of Gods": "Light of Lights",
