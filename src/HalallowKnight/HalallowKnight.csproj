@@ -1,0 +1,86 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>HalallowKnight</AssemblyName>
+    <RootNamespace>HalallowKnight</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <!-- Never copy the game's own DLLs into the output; MAPI already has them. -->
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <!-- Lets net472 build on macOS/Linux without a Windows targeting pack. -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!--
+    Locate the game's Managed folder. Override anything below with:
+        dotnet build -c Release -p:HkManaged="<path to Managed>"
+    Note the folder layout differs by platform: Windows/Linux use hollow_knight_Data/Managed,
+    while macOS buries it inside the .app bundle.
+  -->
+  <PropertyGroup>
+    <_Home Condition="'$(OS)' == 'Windows_NT'">$(USERPROFILE)</_Home>
+    <_Home Condition="'$(OS)' != 'Windows_NT'">$(HOME)</_Home>
+    <_PF86>$([System.Environment]::GetFolderPath(SpecialFolder.ProgramFilesX86))</_PF86>
+    <_HkData>hollow_knight_Data/Managed</_HkData>
+    <_HkMac>hollow_knight.app/Contents/Resources/Data/Managed</_HkMac>
+  </PropertyGroup>
+
+  <!-- Windows: Steam default, then the common D:\ second-library case, then GOG. -->
+  <PropertyGroup Condition="'$(HkManaged)' == '' AND '$(OS)' == 'Windows_NT'">
+    <_C1>$(_PF86)\Steam\steamapps\common\Hollow Knight\$(_HkData)</_C1>
+    <_C2>D:\SteamLibrary\steamapps\common\Hollow Knight\$(_HkData)</_C2>
+    <_C3>$(_PF86)\GOG Galaxy\Games\Hollow Knight\$(_HkData)</_C3>
+    <HkManaged Condition="Exists('$(_C1)')">$(_C1)</HkManaged>
+    <HkManaged Condition="'$(HkManaged)' == '' AND Exists('$(_C2)')">$(_C2)</HkManaged>
+    <HkManaged Condition="'$(HkManaged)' == '' AND Exists('$(_C3)')">$(_C3)</HkManaged>
+  </PropertyGroup>
+
+  <!-- macOS: Steam, then GOG's /Applications drop. -->
+  <PropertyGroup Condition="'$(HkManaged)' == '' AND $([MSBuild]::IsOSPlatform('OSX'))">
+    <_C1>$(_Home)/Library/Application Support/Steam/steamapps/common/Hollow Knight/$(_HkMac)</_C1>
+    <_C2>/Applications/Hollow Knight.app/Contents/Resources/Data/Managed</_C2>
+    <HkManaged Condition="Exists('$(_C1)')">$(_C1)</HkManaged>
+    <HkManaged Condition="'$(HkManaged)' == '' AND Exists('$(_C2)')">$(_C2)</HkManaged>
+  </PropertyGroup>
+
+  <!-- Linux: the two Steam roots, plus Flatpak Steam. -->
+  <PropertyGroup Condition="'$(HkManaged)' == '' AND $([MSBuild]::IsOSPlatform('Linux'))">
+    <_C1>$(_Home)/.steam/steam/steamapps/common/Hollow Knight/$(_HkData)</_C1>
+    <_C2>$(_Home)/.local/share/Steam/steamapps/common/Hollow Knight/$(_HkData)</_C2>
+    <_C3>$(_Home)/.var/app/com.valvesoftware.Steam/data/Steam/steamapps/common/Hollow Knight/$(_HkData)</_C3>
+    <HkManaged Condition="Exists('$(_C1)')">$(_C1)</HkManaged>
+    <HkManaged Condition="'$(HkManaged)' == '' AND Exists('$(_C2)')">$(_C2)</HkManaged>
+    <HkManaged Condition="'$(HkManaged)' == '' AND Exists('$(_C3)')">$(_C3)</HkManaged>
+  </PropertyGroup>
+
+  <Target Name="CheckHkManaged" BeforeTargets="BeforeBuild">
+    <Error Condition="'$(HkManaged)' == ''"
+           Text="Could not find Hollow Knight's Managed folder. Pass it explicitly: dotnet build -c Release -p:HkManaged=&quot;/path/to/Managed&quot;" />
+    <Error Condition="!Exists('$(HkManaged)/Assembly-CSharp.dll')"
+           Text="No Assembly-CSharp.dll in '$(HkManaged)'." />
+    <Error Condition="!Exists('$(HkManaged)/MMHOOK_Assembly-CSharp.dll')"
+           Text="'$(HkManaged)' has no MMHOOK_Assembly-CSharp.dll, so the Modding API is not installed there. Install it via Lumafly (Mods tab -> Toggle API), then rebuild." />
+    <Message Importance="high" Text="Hollow Knight Managed folder: $(HkManaged)" />
+  </Target>
+
+  <!-- Assembly-CSharp.dll is the MAPI-patched one, so it carries Modding.* too. -->
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(HkManaged)/Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(HkManaged)/UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(HkManaged)/Newtonsoft.Json.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>
