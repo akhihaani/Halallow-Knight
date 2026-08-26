@@ -27,6 +27,9 @@ GROUPS = [
     ("Magic and its practitioners", ["shamans","Shaman","shaman","Spells","spells","Spell","spell",
         "Conjures","Conjure","conjures","conjured","conjure","Arcane","arcane","Hex","mystical",
         "Enchanting","Enchanted","Prophet"]),
+    ("SOUL, charms and articles", ["Worldsoul","Kingsoul","Soulful","Sanctum","sanctum","SOULS","SOUL",
+        "Souls","souls","Soul","soul","OVERCHARMED","CHARMS","Charms","charms","Charm","charm",
+        "a charm","A charm","a Charm","A Charm","a Pantheon","A Pantheon","a pantheon","An Arcane","an Arcane"]),
     ("Blessing and fortune", ["Blessings","Blessing","blessings","blessing","Blessed","blessed"," by fortune"]),
 ]
 
@@ -122,34 +125,103 @@ NOTES = """**Notes on specific choices**
 - **`sin` and `sins` can never be term rules** — they sit inside *u**sin**g*, *__sin__ce*,
   *bu**sin**ess* and *cou**sin**s*. All three occurrences are exact overrides.
 - **`blasphemy` → `insolence`** — blasphemy presupposes the sacred order the mod removes.
-- **`heretic` → `outcast`** — Joni was cast out, which is what the line actually means."""
+- **`heretic` → `outcast`** — Joni was cast out, which is what the line actually means.
+- **`SOUL` → `SPARK`** was chosen because every compound falls out naturally: *Spark Catcher*,
+  *Spark Eater*, **Kingspark**, **Worldspark**, *Shade Spark*, *Spark Master*. SOUL is rendered as
+  white light in-game, so it also fits visually. `Soul Sanctum` → **Spark Spire** keeps the
+  alliteration and is literally accurate, since it is a tower in the City of Tears.
+- **Pre-existing uses of "spark" had to be reworked.** Hollow Knight's writing is deliberate, so a
+  stray "spark" would read as a reference to the resource: "a **spark** of power woven into their
+  cores" → *a trace of power*; "A **spark** of red lights darkest dream" → *A flicker of red*;
+  "our life is but a **spark**" → *a flicker*; "wonderful, **sparkling** things" → *glittering*.
+- **`charm` → `emblem`** — every shorter alternative was already taken: *mark* (76), *seal* (40),
+  *stone* (21), *relic* (18), *trinket* (7 — Salubra already calls charms trinkets), *crest* (6 —
+  Defender's Crest), *token* (3 — "Token Marker"), *keepsake*, *talisman*. `emblem` occurs zero
+  times in vanilla text.
+- **`OVERCHARMED` → `OVERBURDENED`** needs its own rule, since no substitute survives that compound.
+- **Article agreement needs its own rules.** "a charm" → "**an** emblem", "a Pantheon" → "**an**
+  Ascent", "An Arcane Egg" → "**A** Primal Egg". These are longer keys, so longest-first applies
+  them before the bare word rule."""
 
 ROADMAP = """## 5. Roadmap
 
-The scheme covers **divine framing** and **magic**. These areas are identified but not implemented.
+The scheme covers **divine framing** and **magic**. Three workstreams remain, to be done in this
+order. They are largely independent — the charm problem is *not* a subset of the dream problem.
 
-### 5.1 Charms
+### 5.1 SOUL → SPARK  *(first)*
+
+135 word-instances across ~104 entries: `SOUL` 53, `Soul` 38, `soul` 31, `souls` 8, `Kingsoul` 2,
+`Worldsoul` 1, `Souls` 1, `Soulful` 1.
+
+**Decided: `SOUL` → `SPARK`.** It was the only candidate where every compound falls out naturally —
+*Spark Catcher*, *Spark Eater*, **Kingspark**, **Worldspark**, *Shade Spark*, *Spark Master* — and
+SOUL is rendered as white light in-game, so it fits visually. *Ember* was too fiery and collided
+with Grimm's flame; *Lumen* was already crowded by the Luminaries scheme.
+
+Beyond the rename:
+
+- **`Sanctum` must change too**, keeping the alliteration: *Soul Sanctum* → **Spark Spire**
+  (it is a tower in the City of Tears, so *spire* is also literally accurate).
+- **Drawing SPARK from living creatures** — *Soul Eater*: "used to draw SOUL from **still-living
+  creatures**" — is to be judged **case by case, not removed wholesale**. Taking something from a
+  living creature is not inherently objectionable; blood is taken from the living too.
+- `Soul Master` / `Soul Twister` / `Soul Warrior` (enemies) and the *Soul & Shade* achievement
+  follow the rename automatically.
+
+### 5.2 Charms  *(second)*
 
 86 entries — a core UI mechanic: charm names, 40+ descriptions, notches, menus.
 
+The concern is the word and the concept: a *charm* is an object worn for magical protection, i.e.
+an amulet. This is **independent of dreams** — only 4 of 45 charms touch dream content at all
+(*Dream Wielder*, *Dreamshield*, the *Kingsoul → Void Heart* chain, and *Grimmchild*'s "flame in
+dream").
+
 > **Solved approach:** term replacement is a plain substring `String.Replace` with no word
-> boundaries, and there are **4 occurrences of "charming"** (e.g. Grimm's "A charming performance…
-> a pleasure!", the Snail Adept's "Aren't you the charming one"). Those four get **exact overrides**
+> boundaries, and there are **4 occurrences of "charming"** (Grimm's "A charming performance… a
+> pleasure!", the Snail Adept's "Aren't you the charming one"). Those four get **exact overrides**
 > so a `charm → …` rule cannot corrupt them into "cresting".
 
-### 5.2 Dreams
+### 5.3 Dreams and the dead  *(third — largest, most entangled)*
 
 ~131 entries plus the 272-entry `Enemy Dreams` sheet. Forms: `dreams` 49, `Dream` 43, `dream` 31,
-`dreaming` 7, `Dreamborn` 7, `Dreamgate` 6, `Dreamers` 5, `Dreamshield` 1. Heavily entangled with
-mechanics and plot. Needs its own pass to separate ordinary sleeping from entering others' dreams.
+`dreaming` 7, `Dreams` 7, `Dreamborn` 7, `Dreamgate` 6, `dreamed` 5, `Dreamers` 5, `Dreamshield` 1.
 
-### 5.3 The dead depicted as acting
+**`dream` cannot be a single term rule.** It splits three ways:
 
-Addressed once already in `Stag|STAG_RESTINGGROUNDS`. Unreviewed: the `Ghosts` sheet (83 entries)
-and the dream-warrior lore, where a dead bug's persisting dream produces a figure resembling them.
-`ghost` 11, `spirit` 15.
+1. **Aspiration, and the lore about the dead** — the leading candidates are `hope` and `memory`.
+   *memory* is theologically tighter ("memories take the shape of those who have passed away" is
+   unambiguously not the person) and the game already glosses it that way itself: the Seer says
+   "This kingdom is full of **old memories**… Seek them out, reveal them, and gather Essence."
+   *hope* reads better in some names. **Undecided** — "Hope Nail" sounds better than "Memory Nail",
+   so the two may not resolve to the same word everywhere.
+2. **Ordinary sleeping** — "Troubled dreams beset the maiden", "In my dreams I could see it".
+   Neither *hope* nor *memory* fits. Leave, or reword individually.
+3. **Proper nouns**, decided one at a time — Dream Nail, Dreamgate, Dreamers, Dreamshield,
+   Dream Wielder, Dreamborn. `Dreamers` → **`Sleepers`** is a natural fit, since Monomon, Lurien
+   and Herrah literally sleep.
 
-### 5.4 Scope limit to keep in mind
+**The game's own text supports the framing.** `WITCH_HINT_XERO`: "Sometimes **dreams take the shape
+of** those who have passed away." The lore already says these are dreams shaped like the dead, not
+the dead persisting — so the work is mostly vocabulary layered on top of that.
+
+**Decided within this workstream:**
+
+- **`ghost`, `spirit` and `wraith` change.** Note *Howling Wraiths* is a spell name, and Hornet
+  calls the player character "**Ghost** of Hallownest".
+- **`Shade` stays.** It reads as *shadow*, and that iconography is central to the Knight and to the
+  game's lore. This covers *Shade Cloak*, *Lord of Shades*, and the death mechanic.
+- **`Essence`** (49) is in scope for review — "fragments of light that dreams are made of",
+  gathered from the dreams of the dead.
+- The achievements *Ascension*, *Awakening* and *Attunement* are all Essence/Dream Nail milestones,
+  so they resolve with this workstream.
+
+### 5.4 Deliberately out of scope
+
+- **The Soul Master's immortality claim** — "he robbed me of my immortality… I will live forever" —
+  is villainous delusion, and the story frames it as madness. Kept.
+
+### 5.5 Scope limit to keep in mind
 
 This mod changes **displayed text only** — the design rule that keeps it a pure reword and
 compatible with everything else. It cannot change mechanics. Renaming the Dream Nail does not stop
@@ -179,6 +251,32 @@ def main():
             changed.append((sheet, key, "exact" if ck in E else "term", orig, res))
 
     cascades = [(k, s) for k, v in T.items() for s in T if s in v and s != k]
+
+    # Substring corruption: a rule key sitting inside a longer word, with no longer rule and no
+    # exact override to protect it. This is how "melancholy" once became "melancluminous".
+    substring = []
+    for key in T:
+        if " " in key:
+            continue
+        pat = re.compile(r"[A-Za-z]*" + re.escape(key) + r"[A-Za-z]*")
+        for r in rows:
+            sheet, k2 = r[0], r[1]
+            if f"{sheet}|{k2}" in E:
+                continue
+            for m in pat.finditer("\t".join(r[2:])):
+                w = m.group()
+                if w == key or any(o != key and o in w and len(o) > len(key) for o in T):
+                    continue
+                substring.append((f"{sheet}|{k2}", key, w))
+
+    # Article agreement introduced by the rewrite ("a emblem", "An Primal").
+    art = re.compile(r"\b[Aa] (?=[aeiouAEIOU])[A-Za-z]+|\b[Aa]n (?=[^aeiouAEIOU\W])[A-Za-z]+")
+    articles = []
+    for sheet, key, kind, o, r in changed:
+        before = set(art.findall(o))
+        for gmatch in art.findall(r):
+            if gmatch not in before:
+                articles.append((f"{sheet}|{key}", gmatch))
 
     o = []
     o.append(f"""# Reworded text
@@ -250,6 +348,7 @@ with all other rewording already applied.
 | **SOUL** | a core game mechanic — 104 entries untouched, pending a decision |
 | **`salvation`** | the line glosses it itself: "The Kingdom's salvation, **the cure for the plague**" — rescue, not theology |
 | **`Saviour`** | Bretta's diary romance about Zote ("The White Saviour"), and "tiny saviour" — a rescuer in the ordinary sense |
+| **`charming`** | the ordinary adjective, unrelated to amulets — kept in all 4 places via exact overrides, so the `charm` rule cannot corrupt it into "embleming" |
 | **`chanting`** | left by choice — one use, Elderbug describing Jiji's cave as "extremely **sinister** chanting", framed as eerie rather than devotional |
 | **"Dreams revered"** (`DREAM_PLANT_REST_MAIN`) | untouched vanilla wording — the game's own secular use of *revered* |
 
@@ -280,6 +379,11 @@ Generated by simulating the mod's own algorithm over all {total:,} dumped entrie
 - **{sum(1 for c in changed if c[2] == 'exact')}** exact overrides, {sum(1 for c in changed if c[2] == 'term')} via term rules
 - **{len(T)}** term rules, **{len(E)}** exact overrides
 - **{len(cascades)}** replacement cascades (no rule's output may contain another rule's search key)
+- **{len(substring)}** substring corruptions (a rule firing inside a longer word — this is how
+  *melancholy* once became *melancluminous*, and it is why `charming`, `Charmed` and `spellcaster`
+  are exact overrides){chr(10) + "  " + chr(10).join(f"  - `{a}` -> {b!r} inside {c!r}" for a, b, c in substring[:10]) if substring else ""}
+- **{len(articles)}** article-agreement errors introduced ("a emblem", "An Primal")
+{chr(10).join(f"  - `{a}`: {b!r}" for a, b in articles[:10]) if articles else ""}
 """)
     open(OUT, "w", encoding="utf-8").write("\n".join(o))
     print(f"REWORDS.md: {len(changed)} changed / {total} entries, {len(T)} terms, {len(E)} overrides, {len(cascades)} cascades")
