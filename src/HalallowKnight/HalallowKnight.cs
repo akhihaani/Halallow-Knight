@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using Modding;
 using Newtonsoft.Json;
 
@@ -24,17 +25,20 @@ namespace HalallowKnight
         private readonly Dictionary<string, string> _cache = new Dictionary<string, string>();
         private string _dir = ".";
         private string _dumpPath = "";
+        private string _dumpAllPath = "";
+        private bool _dumpedAll;
 
         public override void Initialize()
         {
             _dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? ".";
             _dumpPath = Path.Combine(_dir, "language-dump.tsv");
+            _dumpAllPath = Path.Combine(_dir, "language-dump-all.tsv");
 
             LoadConfig();
 
             ModHooks.LanguageGetHook += OnLanguageGet;
 
-            Log($"Initialized. dumpMode={_cfg.DumpMode}, " +
+            Log($"Initialized. dumpMode={_cfg.DumpMode}, dumpAll={_cfg.DumpAll}, " +
                 $"exactOverrides={_cfg.ExactOverrides.Count}, terms={_cfg.TermReplacements.Count}");
         }
 
@@ -46,6 +50,14 @@ namespace HalallowKnight
         {
             try
             {
+                // Fire once, on the first lookup - by then the language data is definitely
+                // loaded, which it may not be while Initialize() is still running.
+                if (_cfg.DumpAll && !_dumpedAll)
+                {
+                    _dumpedAll = true;   // set first: a failure must not retry every lookup
+                    DumpAll();
+                }
+
                 if (_cfg.DumpMode)
                 {
                     Dump(key, sheet, orig);
@@ -66,14 +78,68 @@ namespace HalallowKnight
             string id = sheet + "\t" + key;
             if (!_seen.Add(id)) return;
 
-            // Escape newlines/tabs so one entry stays one line in the TSV.
-            string text = (orig ?? "")
+            File.AppendAllText(_dumpPath, id + "\t" + Escape(orig) + Environment.NewLine);
+        }
+
+        /// <summary>
+        /// Development helper. Reads the game's already-loaded localisation table in one go and
+        /// writes every (sheet, key, original) to language-dump-all.tsv, so the reword list can be
+        /// built without playing to endgame content first.
+        ///
+        /// This is a read of the same text the hook already sees - it installs no additional hook
+        /// and mutates nothing. Off by default in the shipped config.
+        /// </summary>
+        private void DumpAll()
+        {
+            const string FieldName = "currentEntrySheets";
+
+            FieldInfo field = typeof(global::Language.Language)
+                .GetField(FieldName, BindingFlags.NonPublic | BindingFlags.Static);
+
+            if (field == null)
+            {
+                LogError($"dumpAll: no static field '{FieldName}' on Language.Language; " +
+                         "the game version may differ. Falling back to incremental dump only.");
+                return;
+            }
+
+            if (!(field.GetValue(null) is Dictionary<string, Dictionary<string, string>> sheets))
+            {
+                LogError($"dumpAll: '{FieldName}' was null or not the expected dictionary type.");
+                return;
+            }
+
+            var sb = new StringBuilder();
+            int rows = 0;
+
+            // Sorted so re-runs produce a stable, diffable file.
+            foreach (string sheet in sheets.Keys.OrderBy(k => k, StringComparer.Ordinal))
+            {
+                Dictionary<string, string> entries = sheets[sheet];
+                if (entries == null) continue;
+
+                foreach (string key in entries.Keys.OrderBy(k => k, StringComparer.Ordinal))
+                {
+                    sb.Append(sheet).Append('\t')
+                      .Append(key).Append('\t')
+                      .Append(Escape(entries[key]))
+                      .Append(Environment.NewLine);
+                    rows++;
+                }
+            }
+
+            File.WriteAllText(_dumpAllPath, sb.ToString());
+            Log($"dumpAll: wrote {rows} entries across {sheets.Count} sheets to {_dumpAllPath}");
+        }
+
+        /// <summary>Keeps one entry on one TSV line.</summary>
+        private static string Escape(string text)
+        {
+            return (text ?? "")
                 .Replace("\\", "\\\\")
                 .Replace("\r", "")
                 .Replace("\n", "\\n")
                 .Replace("\t", "\\t");
-
-            File.AppendAllText(_dumpPath, id + "\t" + text + Environment.NewLine);
         }
 
         private string Apply(string key, string sheet, string orig)
@@ -126,6 +192,13 @@ namespace HalallowKnight
     {
         [JsonProperty("dumpMode")]
         public bool DumpMode = true;
+
+        /// <summary>
+        /// Development helper: dump the game's entire localisation table once, on first lookup.
+        /// Leave false in released builds.
+        /// </summary>
+        [JsonProperty("dumpAll")]
+        public bool DumpAll = false;
 
         /// <summary>"Sheet|KEY" -> replacement text.</summary>
         [JsonProperty("exactOverrides")]
