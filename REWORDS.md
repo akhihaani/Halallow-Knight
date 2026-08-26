@@ -2,7 +2,7 @@
 
 Every change Halallow Knight makes, and every deliberate decision *not* to change something.
 Generated against Hollow Knight **1.5.78.11833** — 4,089 localisation entries, of which
-**556 are altered** and 3,533 are untouched.
+**564 are altered** and 3,525 are untouched.
 
 *This file is generated. Run `python3 tools/gen_rewords.py` after editing the config.*
 
@@ -313,7 +313,7 @@ like `Godhome` are handled before the bare `god` inside them.
 
 ## 2. Exact overrides
 
-70 entries are replaced outright rather than word-by-word, because a term rule would have
+78 entries are replaced outright rather than word-by-word, because a term rule would have
 been wrong or clumsy. **Exact overrides bypass term replacements entirely**, so each is written
 with all other rewording already applied.
 
@@ -334,6 +334,14 @@ with all other rewording already applied.
 | `UI\|SHOP_DESC_SPELLDMGUP` | "Are you a **spellcaster**" |
 | `CP3\|NOTE_PURE_VESSEL` | *spell* carries the shell/spell rhyme; *cell* keeps it and fits the Vessel's imprisonment |
 | `Journal\|NOTE_PURE_VESSEL` | duplicate of the above |
+| `Zote\|PRECEPT_6` | "'**Choose Your Own Fate**'... our fate is chosen for us before we are even born. **I disagree**" — an explicit rejection of predestination |
+| `Minor NPC\|LITTLE_FOOL_MARK` | "from that point on, **your destiny is your own**" |
+| `Lore Tablets\|FUNG_SHROOM_DREAM` | "What good to **foresee** a demise unavoidable?" — knowledge of a specific future |
+| `Minor NPC\|MR_MUSHROOM_4` | "the **chains of fate**... do you really want to **break them**?" |
+| `Relic Dealer\|RELICDEALER_JOURNAL_1` | "it seems **fate was unkind** to most" — fate cast as unjust |
+| `Lore Tablets\|WISHING_WELL_INSPECT` | "let Hallownest's Pale King **relieve you of your burden**" — reads as absolution; it is really a joke about the well taking your Geo |
+| `Lore Tablets\|WP_THRONE_01` | "**to yield, to devote**" and "**Eternity in promise**" — devotion to the King, and eternity promised |
+| `Lore Tablets\|FUNG_TAB_01` | "the **will** of the Wyrm" and "its **prescience** shields us" — submission, and foreknowledge |
 | `Zote\|PRECEPT_29` | "a **magical** map inside of your head" — figurative, but the word still goes |
 | `Minor NPC\|DUNG_DEFENDER_REPEAT` | "Good **fortune** on the path ahead" — luck, not divination |
 | `UI\|SHOP_DESC_TRINKET4` | "a small **fortune**" — money, so it needs a different word again |
@@ -482,6 +490,54 @@ with all other rewording already applied.
 
 > **After** — "Deepest silence in luminous shell,<br>Given nail and named a Knight,<br>Bound by chain and egg and cell,<br>Sealed away from all our sight."<br>- Song of the Vessel
 
+**`Zote|PRECEPT_6`**
+
+> **Before** — Precept Six: 'Choose Your Own Fate'.<page>Our elders teach that our fate is chosen for us before we are even born. I disagree.
+
+> **After** — Precept Six: 'Trust Your Own Counsel'.<page>Our elders teach that wisdom comes only with age. I disagree.
+
+**`Minor NPC|LITTLE_FOOL_MARK`**
+
+> **Before** — To enter a trial, step over to the board and place your mark. From that point on, your destiny is your own...
+
+> **After** — To enter a trial, step over to the board and place your mark. From that point on, the trial is yours alone...
+
+**`Lore Tablets|FUNG_SHROOM_DREAM`**
+
+> **Before** — Pale Wyrm...What good to foresee a demise unavoidable?
+
+> **After** — Pale Wyrm...What good is all that planning, when the end comes regardless?
+
+**`Minor NPC|MR_MUSHROOM_4`**
+
+> **Before** — ...What was called a "hero" in its moment may be called something very different after time has passed. <page>The crimes and triumphs of our predecessors echo all around us, don't they?<page>The chains of fate that bind us all together... do you really want to break them?
+
+> **After** — ...What was called a "hero" in its moment may be called something very different after time has passed. <page>The crimes and triumphs of our predecessors echo all around us, don't they?<page>The chains of history that bind us all together... do you really want to break them?
+
+**`Relic Dealer|RELICDEALER_JOURNAL_1`**
+
+> **Before** — A Wanderer's Journal, eh?<page>Though they're common finds about the kingdom, I much enjoy the deciphering of their text.<page>Read together they paint a morbid tale. It seems fate was unkind to most who travel within Hallownest's ruin.
+
+> **After** — A Wanderer's Journal, eh?<page>Though they're common finds about the kingdom, I much enjoy the deciphering of their text.<page>Read together they paint a morbid tale. It seems few who travel within Hallownest's ruin ever find their way out again.
+
+**`Lore Tablets|WISHING_WELL_INSPECT`**
+
+> **Before** — A true servant gives all for the Kingdom.<br>Let Hallownest's Pale King relieve you of your burden.
+
+> **After** — A true servant gives all for the Kingdom.<br>Let Hallownest's Pale King lighten your purse.
+
+**`Lore Tablets|WP_THRONE_01`**
+
+> **Before** — No blazing kin. Only one light shall shine against the dark.<br>The Wyrm becomes beacon, minds expanded, to yield, to devote.<br>Eternity in promise and charge in progeny cursed.
+
+> **After** — No blazing kin. Only one light shall shine against the dark.<br>The Wyrm becomes beacon, minds expanded, to gather, to build.<br>Endurance in purpose and charge in progeny cursed.
+
+**`Lore Tablets|FUNG_TAB_01`**
+
+> **Before** — Warily shall we accept the will of the Wyrm.<br>Its prescience shields us.<br>Fate and Future we shall entwine.
+
+> **After** — Warily shall we accept the terms of the Wyrm.<br>Its foresight shields us.<br>Fate and Future we shall entwine.
+
 **`Zote|PRECEPT_29`**
 
 > **Before** — Precept Twenty-Nine: 'Develop Your Sense of Direction'.<page>It's easy to get lost when travelling through winding, twisting caverns. Having a good sense of direction is like having a magical map inside of your head. Very useful.
@@ -606,7 +662,7 @@ with all other rewording already applied.
 
 > **Before** — Wretch! Thou hast ordained thine own destruction!<br><page>Through sacred combat are We attuned to this Kingdom's greatest beings. By entering this gate thou hast challenged the very Gods of this Kingdom!<br><page>Dost thou consider thyself the equal of this pantheon, of its masters? Draw thy weapon then, fool of fools, and be damned for thy arrogance!
 
-> **After** — Wretch! Thou hast ordained thine own destruction!<br><page>Through trial by combat are We attuned to this Kingdom's greatest beings. By entering this gate thou hast challenged the very Luminaries of this Kingdom!<br><page>Dost thou consider thyself the equal of this ascent, of its masters? Draw thy weapon then, fool of fools, and be undone by thine own arrogance!
+> **After** — Wretch! Thou hast invited thine own destruction!<br><page>Through trial by combat are We attuned to this Kingdom's greatest beings. By entering this gate thou hast challenged the very Luminaries of this Kingdom!<br><page>Dost thou consider thyself the equal of this ascent, of its masters? Draw thy weapon then, fool of fools, and be undone by thine own arrogance!
 
 **`CP3|GODSEEKER_ENGINE_REPEAT_3`**
 
@@ -835,6 +891,11 @@ with all other rewording already applied.
 | **dreams as aspiration** | "Dreams of glory", "don't let your past keep you from your dreams", and Galien's "the hopes and dreams of the kingdom" |
 | **`spirit`** as courage or morale | "your unwavering spirit", "it'd do our spirits well", Zote's "fire is a type of hot spirit" |
 | **`Shade`** | kept deliberately — it reads as *shadow*, and that iconography is central to the Knight and the game's lore. Covers Shade Cloak, Lord of Shades and the death mechanic. |
+| **believing in fate** | not a problem in itself, so these stay: "Fate can be a wonderful thing", "a Kingdom always destined for ruin", "their fated meeting", "the fate of this world", "**Doomed she thought herself**" (thought, not knew), and the White Lady's "inevitable **on current course**", which is hedged reasoning rather than a claim of knowledge |
+| **`foresight`** as prudence | "No foresight like those old things", "Its foresight shields us" — planning ahead, not knowledge of the unseen |
+| **Xero's "already doomed"** | a defeated ghost's despair, which the game goes on to disprove |
+| **Grimm's "your role was cast"** | a contract being struck, not destiny being fixed |
+| **Zote's "Obey No Law But Your Own"** | left by choice — same framing as his other precepts, all of which the game presents as foolish |
 | **`chanting`** | left by choice — one use, Elderbug describing Jiji's cave as "extremely **sinister** chanting", framed as eerie rather than devotional |
 | **"Dreams revered"** (`DREAM_PLANT_REST_MAIN`) | untouched vanilla wording — the game's own secular use of *revered* |
 
@@ -857,12 +918,12 @@ final output, and both are intentional.
 | Prompts | 27 |
 | Achievements | 25 |
 | Titles | 22 |
+| Minor NPC | 21 |
 | CP2 | 20 |
-| Minor NPC | 19 |
-| Lore Tablets | 15 |
+| Lore Tablets | 19 |
 | Charm Slug | 14 |
 | Enemy Dreams | 11 |
-| Relic Dealer | 9 |
+| Relic Dealer | 10 |
 | Shaman | 9 |
 | Hornet | 7 |
 | Ghosts | 6 |
@@ -875,13 +936,13 @@ final output, and both are intentional.
 | Quirrel | 3 |
 | Credits List | 2 |
 | MainMenu | 2 |
+| Zote | 2 |
 | Cornifer | 1 |
 | General | 1 |
 | Iselda | 1 |
 | Nailsmith | 1 |
 | Sly | 1 |
 | Stag | 1 |
-| Zote | 1 |
 
 `CP3` is the Godmaster content pack and `CP2` the Grimm Troupe, which is why those dominate.
 
@@ -935,9 +996,9 @@ far. Everything above is a change of words.
 
 Generated by simulating the mod's own algorithm over all 4,089 dumped entries:
 
-- **556** entries changed, 3,533 untouched
-- **68** exact overrides, 488 via term rules
-- **169** term rules, **70** exact overrides
+- **564** entries changed, 3,525 untouched
+- **76** exact overrides, 488 via term rules
+- **169** term rules, **78** exact overrides
 - **0** replacement cascades (no rule's output may contain another rule's search key)
 - **0** substring corruptions (a rule firing inside a longer word — this is how
   *melancholy* once became *melancluminous*, and it is why `charming`, `Charmed` and `spellcaster`

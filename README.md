@@ -143,7 +143,7 @@ The shipped wording recasts divine authority as light and brilliance rather than
 
 > *"**Higher beings**, these words are for you alone."* → *"**Luminaries**, these words are for you alone."*
 
-**556 of the game's 4,089 text entries are altered**; the other 3,533 are untouched. The scheme
+**564 of the game's 4,089 text entries are altered**; the other 3,525 are untouched. The scheme
 currently covers divine framing and magic. Charms, dreams and the depiction of the dead are noted
 as future work in REWORDS.md.
 
