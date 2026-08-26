@@ -56,6 +56,14 @@ OVERRIDE_REASONS = [
     ("UI|SHOP_DESC_SPELLDMGUP", "\"Are you a **spellcaster**\""),
     ("CP3|NOTE_PURE_VESSEL", "*spell* carries the shell/spell rhyme; *cell* keeps it and fits the Vessel's imprisonment"),
     ("Journal|NOTE_PURE_VESSEL", "duplicate of the above"),
+    ("Zote|PRECEPT_6", "\"'**Choose Your Own Fate**'... our fate is chosen for us before we are even born. **I disagree**\" \u2014 an explicit rejection of predestination"),
+    ("Minor NPC|LITTLE_FOOL_MARK", "\"from that point on, **your destiny is your own**\""),
+    ("Lore Tablets|FUNG_SHROOM_DREAM", "\"What good to **foresee** a demise unavoidable?\" \u2014 knowledge of a specific future"),
+    ("Minor NPC|MR_MUSHROOM_4", "\"the **chains of fate**... do you really want to **break them**?\""),
+    ("Relic Dealer|RELICDEALER_JOURNAL_1", "\"it seems **fate was unkind** to most\" \u2014 fate cast as unjust"),
+    ("Lore Tablets|WISHING_WELL_INSPECT", "\"let Hallownest's Pale King **relieve you of your burden**\" \u2014 reads as absolution; it is really a joke about the well taking your Geo"),
+    ("Lore Tablets|WP_THRONE_01", "\"**to yield, to devote**\" and \"**Eternity in promise**\" \u2014 devotion to the King, and eternity promised"),
+    ("Lore Tablets|FUNG_TAB_01", "\"the **will** of the Wyrm\" and \"its **prescience** shields us\" \u2014 submission, and foreknowledge"),
     ("Zote|PRECEPT_29", "\"a **magical** map inside of your head\" — figurative, but the word still goes"),
     ("Minor NPC|DUNG_DEFENDER_REPEAT", "\"Good **fortune** on the path ahead\" — luck, not divination"),
     ("UI|SHOP_DESC_TRINKET4", "\"a small **fortune**\" — money, so it needs a different word again"),
@@ -353,6 +361,11 @@ with all other rewording already applied.
 | **dreams as aspiration** | "Dreams of glory", "don't let your past keep you from your dreams", and Galien's "the hopes and dreams of the kingdom" |
 | **`spirit`** as courage or morale | "your unwavering spirit", "it'd do our spirits well", Zote's "fire is a type of hot spirit" |
 | **`Shade`** | kept deliberately — it reads as *shadow*, and that iconography is central to the Knight and the game's lore. Covers Shade Cloak, Lord of Shades and the death mechanic. |
+| **believing in fate** | not a problem in itself, so these stay: "Fate can be a wonderful thing", "a Kingdom always destined for ruin", "their fated meeting", "the fate of this world", "**Doomed she thought herself**" (thought, not knew), and the White Lady's "inevitable **on current course**", which is hedged reasoning rather than a claim of knowledge |
+| **`foresight`** as prudence | "No foresight like those old things", "Its foresight shields us" — planning ahead, not knowledge of the unseen |
+| **Xero's "already doomed"** | a defeated ghost's despair, which the game goes on to disprove |
+| **Grimm's "your role was cast"** | a contract being struck, not destiny being fixed |
+| **Zote's "Obey No Law But Your Own"** | left by choice — same framing as his other precepts, all of which the game presents as foolish |
 | **`chanting`** | left by choice — one use, Elderbug describing Jiji's cave as "extremely **sinister** chanting", framed as eerie rather than devotional |
 | **"Dreams revered"** (`DREAM_PLANT_REST_MAIN`) | untouched vanilla wording — the game's own secular use of *revered* |
 
