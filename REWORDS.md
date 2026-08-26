@@ -2,7 +2,7 @@
 
 Every change Halallow Knight makes, and every deliberate decision *not* to change something.
 Generated against Hollow Knight **1.5.78.11833** — 4,089 localisation entries, of which
-**313 are altered** and 3,776 are untouched.
+**465 are altered** and 3,624 are untouched.
 
 *This file is generated. Run `python3 tools/gen_rewords.py` after editing the config.*
 
@@ -109,6 +109,37 @@ like `Godhome` are handled before the bare `god` inside them.
 | `Enchanted` | `Adorned` |
 | `Prophet` | `Speaker` |
 
+### SOUL, charms and articles
+
+| original | becomes |
+|---|---|
+| `Worldsoul` | `Worldspark` |
+| `Kingsoul` | `Kingspark` |
+| `Soulful` | `Brimming` |
+| `Sanctum` | `Spire` |
+| `sanctum` | `spire` |
+| `SOULS` | `SPARKS` |
+| `SOUL` | `SPARK` |
+| `Souls` | `Sparks` |
+| `souls` | `sparks` |
+| `Soul` | `Spark` |
+| `soul` | `spark` |
+| `OVERCHARMED` | `OVERBURDENED` |
+| `CHARMS` | `EMBLEMS` |
+| `Charms` | `Emblems` |
+| `charms` | `emblems` |
+| `Charm` | `Emblem` |
+| `charm` | `emblem` |
+| `a charm` | `an emblem` |
+| `A charm` | `An emblem` |
+| `a Charm` | `an Emblem` |
+| `A Charm` | `An Emblem` |
+| `a Pantheon` | `an Ascent` |
+| `A Pantheon` | `An Ascent` |
+| `a pantheon` | `an ascent` |
+| `An Arcane` | `A Primal` |
+| `an Arcane` | `a Primal` |
+
 ### Blessing and fortune
 
 | original | becomes |
@@ -167,12 +198,28 @@ like `Godhome` are handled before the bare `god` inside them.
   *bu**sin**ess* and *cou**sin**s*. All three occurrences are exact overrides.
 - **`blasphemy` → `insolence`** — blasphemy presupposes the sacred order the mod removes.
 - **`heretic` → `outcast`** — Joni was cast out, which is what the line actually means.
+- **`SOUL` → `SPARK`** was chosen because every compound falls out naturally: *Spark Catcher*,
+  *Spark Eater*, **Kingspark**, **Worldspark**, *Shade Spark*, *Spark Master*. SOUL is rendered as
+  white light in-game, so it also fits visually. `Soul Sanctum` → **Spark Spire** keeps the
+  alliteration and is literally accurate, since it is a tower in the City of Tears.
+- **Pre-existing uses of "spark" had to be reworked.** Hollow Knight's writing is deliberate, so a
+  stray "spark" would read as a reference to the resource: "a **spark** of power woven into their
+  cores" → *a trace of power*; "A **spark** of red lights darkest dream" → *A flicker of red*;
+  "our life is but a **spark**" → *a flicker*; "wonderful, **sparkling** things" → *glittering*.
+- **`charm` → `emblem`** — every shorter alternative was already taken: *mark* (76), *seal* (40),
+  *stone* (21), *relic* (18), *trinket* (7 — Salubra already calls charms trinkets), *crest* (6 —
+  Defender's Crest), *token* (3 — "Token Marker"), *keepsake*, *talisman*. `emblem` occurs zero
+  times in vanilla text.
+- **`OVERCHARMED` → `OVERBURDENED`** needs its own rule, since no substitute survives that compound.
+- **Article agreement needs its own rules.** "a charm" → "**an** emblem", "a Pantheon" → "**an**
+  Ascent", "An Arcane Egg" → "**A** Primal Egg". These are longer keys, so longest-first applies
+  them before the bare word rule.
 
 ---
 
 ## 2. Exact overrides
 
-46 entries are replaced outright rather than word-by-word, because a term rule would have
+67 entries are replaced outright rather than word-by-word, because a term rule would have
 been wrong or clumsy. **Exact overrides bypass term replacements entirely**, so each is written
 with all other rewording already applied.
 
@@ -224,6 +271,27 @@ with all other rewording already applied.
 | `Dream Witch\|WITCH_FINAL_2` | "hush whispers of **faith**" — belief in the ancient light |
 | `Achievements\|ENDINGD_TEXT` | term rules produced "**Ascend the Ascent** of Hallownest" |
 | `CP3\|ENDING_D_TEXT` | duplicate of the above |
+| `CP2\|NYMM_MEET` | — |
+| `Shaman\|SHAMAN_SCREAM` | — |
+| `CP3\|GRIMM_GG_2` | — |
+| `Enemy Dreams\|GRIMM_GG_2` | — |
+| `Achievements\|CHARMED_TITLE` | — |
+| `Charm Slug\|CHARMSLUG_TRUTH` | — |
+| `Charm Slug\|CHARMSLUG_MEET_3B` | — |
+| `Journal\|NOTE_FLAMEBEARER_MED` | — |
+| `Backer Messages\|BELIEVE_TAB_19` | — |
+| `Charm Slug\|CHARMSLUG_NOSTOCK` | — |
+| `Lore Tablets\|FUNG_TAB_03` | — |
+| `Jiji\|RESTING_GROUNDS` | — |
+| `CP3\|GODSEEKER_ENGINE_REPEAT_2` | — |
+| `UI\|CHARM_DESC_19` | — |
+| `CP3\|GODSEEKER_ENGINE_2` | — |
+| `Lore Tablets\|DREAM_PLANT_01` | — |
+| `Lore Tablets\|DREAM_PLANT_REST_GLADE` | — |
+| `General\|PROLOGUE_EXCERPT_02` | — |
+| `Lore Tablets\|RANDOM_POEM_STUFF` | — |
+| `CP3\|NIGHTMARE_GRIMM_GG_1` | — |
+| `Enemy Dreams\|NIGHTMARE_GRIMM_GG_1` | — |
 
 ### Full text
 
@@ -249,7 +317,7 @@ with all other rewording already applied.
 
 > **Before** — O Gods of Hallownest, graciously thee open the way to this greatest of Pantheons! Thy voices grow closer and thy resonance draws Us ever higher!<br><page>Pray will We, Attune will We, until that spark of divine light shines from the deepest darkness!
 
-> **After** — O Luminaries of Hallownest, graciously thee open the way to this greatest of Ascents! Thy voices grow closer and thy resonance draws Us ever higher!<br><page>Seek will We, Attune will We, until that spark of sublime light shines from the deepest darkness!
+> **After** — O Luminaries of Hallownest, graciously thee open the way to this greatest of Ascents! Thy voices grow closer and thy resonance draws Us ever higher!<br><page>Seek will We, Attune will We, until that glimmer of sublime light shines from the deepest darkness!
 
 **`Elderbug|ELDERBUG_TEMPLE_VISITED`**
 
@@ -297,13 +365,13 @@ with all other rewording already applied.
 
 > **Before** — Reflecting the desires of the Soul Sanctum for mastery over SOUL, it improves the bearer's ability to cast spells.<br><br>Reduces the SOUL cost of casting spells.
 
-> **After** — Reflecting the desires of the Soul Sanctum for mastery over SOUL, it improves the bearer's ability to use skills.<br><br>Reduces the SOUL cost of using skills.
+> **After** — Reflecting the desires of the Spark Spire for mastery over SPARK, it improves the bearer's ability to use skills.<br><br>Reduces the SPARK cost of using skills.
 
 **`UI|SHOP_DESC_SPELLDMGUP`**
 
 > **Before** — Are you a spellcaster, you little scoundrel? Ho ho! I'm only teasing.<br><br>If you ever learn any spells you should buy this charm for yourself. I've heard it will make a spell much stronger!
 
-> **After** — Are you a student of SOUL, you little scoundrel? Ho ho! I'm only teasing.<br><br>If you ever learn any skills you should buy this charm for yourself. I've heard it will make a skill much stronger!
+> **After** — Are you a student of SPARK, you little scoundrel? Ho ho! I'm only teasing.<br><br>If you ever learn any skills you should buy this emblem for yourself. I've heard it will make a skill much stronger!
 
 **`CP3|NOTE_PURE_VESSEL`**
 
@@ -459,7 +527,7 @@ with all other rewording already applied.
 
 > **Before** — It's a bit of a sin to wear too many Charms at once, isn't it? Sometimes less is more! Mmmm!<page>Yes, you shouldn't try to cram on more Charms than you can handle. The effect could be positively overwhelming!
 
-> **After** — It's a bit of a shame to wear too many Charms at once, isn't it? Sometimes less is more! Mmmm!<page>Yes, you shouldn't try to cram on more Charms than you can handle. The effect could be positively overwhelming!
+> **After** — It's a bit of a shame to wear too many Emblems at once, isn't it? Sometimes less is more! Mmmm!<page>Yes, you shouldn't try to cram on more Emblems than you can handle. The effect could be positively overwhelming!
 
 **`Journal|NOTE_GHOST_XERO`**
 
@@ -503,6 +571,132 @@ with all other rewording already applied.
 
 > **After** — Climb the Ascent of Hallownest and take your place at its peak
 
+**`CP2|NYMM_MEET`**
+
+> **Before** — Ah. Hello! Hello! I'm new around these parts, so it's marvelous to see so friendly a face, in such a sad town.<page>The old bug over there was very welcoming, but still I find the place a little melancholy, what with the wind, and the darkness, and the sense of decline... I was hoping my music could go some way to livening up the place.<page>And now you've arrived with that wonderful, charming aura about you. The whole town feels brighter for it.<page>Before you hurry about your business, I've a small gift to commemorate a wonderful new friendship. No use for it myself, but I believe it'd look rather fancy upon you.<page>Please, enjoy it, and lets hope to see much more of one another about town.
+
+> **After** — Ah. Hello! Hello! I'm new around these parts, so it's marvelous to see so friendly a face, in such a sad town.<page>The old bug over there was very welcoming, but still I find the place a little melancholy, what with the wind, and the darkness, and the sense of decline... I was hoping my music could go some way to livening up the place.<page>And now you've arrived with that wonderful, charming aura about you. The whole town feels brighter for it.<page>Before you hurry about your business, I've a small gift to commemorate a wonderful new friendship. No use for it myself, but I believe it'd look rather fancy upon you.<page>Please, enjoy it, and lets hope to see much more of one another about town.
+
+**`Shaman|SHAMAN_SCREAM`**
+
+> **Before** — Pried a spell out've my larger cousin did you? Aren't you the charming one.<page>She's not usually the generous sort, certainly not as giving as myself, but she does have that wonderful voice! It's no surprise her spells take on such aural force.
+
+> **After** — Pried a skill out've my larger cousin did you? Aren't you the charming one.<page>She's not usually the generous sort, certainly not as giving as myself, but she does have that wonderful voice! It's no surprise her skills take on such aural force.
+
+**`CP3|GRIMM_GG_2`**
+
+> **Before** — A charming ritual... a pleasure!
+
+> **After** — A charming performance... a pleasure!
+
+**`Enemy Dreams|GRIMM_GG_2`**
+
+> **Before** — A charming ritual... a pleasure!
+
+> **After** — A charming performance... a pleasure!
+
+**`Achievements|CHARMED_TITLE`**
+
+> **Before** — Charmed
+
+> **After** — Bedecked
+
+**`Charm Slug|CHARMSLUG_TRUTH`**
+
+> **Before** — My dapper gadfly, would you care to know how charms are made? I don't often tell my customers, what with the truth being a little morbid. But you're a sharp one so you may have guessed already.<page>Few ways a charm appears but mainly it's from final wish, a dying bug's potent desire crystallised into these gorgeous, powerful trinkets.<page>Now don't go getting too sad. There are exceptions of course, and really, it's quite beautiful, makes them all the more precious. Mmhhmm.<page>Just think of all the little bug souls that went into creating your collection! It's like a crowd of strangers in your pouch, or purse, or...err....wherever it is you keep them.
+
+> **After** — My dapper gadfly, would you care to know how emblems are made? I don't often tell my customers, what with the truth being a little morbid. But you're a sharp one so you may have guessed already.<page>Few ways an emblem appears but mainly it's from final wish, a dying bug's potent desire crystallised into these gorgeous, powerful trinkets.<page>Now don't go getting too sad. There are exceptions of course, and really, it's quite beautiful, makes them all the more precious. Mmhhmm.<page>Just think of all the little bug hopes that went into creating your collection! It's like carrying a crowd of strangers' last wishes in your pouch, or purse, or...err....wherever it is you keep them.
+
+**`Charm Slug|CHARMSLUG_MEET_3B`**
+
+> **Before** — Mmm... What were we talking about? Oh yes, Charms! I'm surprised a stylish little gadfly like yourself isn't wearing any, actually.<page>Charms are gorgeous, mystical, one-of-a-kind accessories with a spark of power woven into their cores. Just wearing one is enough to change your life! You'll do things you never thought possible!<page>Take a look at some of the Charms I have for sale. You can take one home with you if you like!
+
+> **After** — Mmm... What were we talking about? Oh yes, Emblems! I'm surprised a stylish little gadfly like yourself isn't wearing any, actually.<page>Emblems are gorgeous, curious, one-of-a-kind accessories with a trace of power woven into their cores. Just wearing one is enough to change your life! You'll do things you never thought possible!<page>Take a look at some of the Emblems I have for sale. You can take one home with you if you like!
+
+**`Journal|NOTE_FLAMEBEARER_MED`**
+
+> **Before** — "A spark of red lights darkest dream,<br>Scarlet nightmares bright and wild,<br>Visions dance and flames do speak,<br>Burn the father, feed the child."<br>- 'The Grimm Troupe'
+
+> **After** — "A flicker of red lights darkest dream,<br>Scarlet nightmares bright and wild,<br>Visions dance and flames do speak,<br>Burn the father, feed the child."<br>- 'The Grimm Troupe'
+
+**`Backer Messages|BELIEVE_TAB_19`**
+
+> **Before** — Samu<br><br>Be the person you would like to meet. If our life is but a spark in the eyes of gods, lets blind them at least once.
+
+> **After** — Samu<br><br>Be the person you would like to meet. If our life is but a flicker in the eyes of luminaries, lets blind them at least once.
+
+**`Charm Slug|CHARMSLUG_NOSTOCK`**
+
+> **Before** — Goodness, goodness. You've gone and bought all my lovely charms! What a stunning, colourful collection you've amassed. Mmmmmm! You're even more the attractive bug, clad in all those wonderful, sparkling things.<page>I may have nothing more to give, but you must come back and visit from time to time. Such a dashing figure frequenting my store. I bet the whole village is jealous. Mmm hmm!
+
+> **After** — Goodness, goodness. You've gone and bought all my lovely emblems! What a stunning, colourful collection you've amassed. Mmmmmm! You're even more the attractive bug, clad in all those wonderful, glittering things.<page>I may have nothing more to give, but you must come back and visit from time to time. Such a dashing figure frequenting my store. I bet the whole village is jealous. Mmm hmm!
+
+**`Lore Tablets|FUNG_TAB_03`**
+
+> **Before** — Strength in the shared self.<br>Strength in the mind united.<br>In every bug that would pass upon our roads,<br>only the melancholy of disparity.
+
+> **After** — Strength in the shared self.<br>Strength in the mind united.<br>In every bug that would pass upon our roads,<br>only the melancholy of disparity.
+
+**`Jiji|RESTING_GROUNDS`**
+
+> **Before** — Yes, I can see the regrets you've left behind. A dark stain in a holy place of repose.
+
+> **After** — Yes, I can see the regrets you've left behind. A dark stain in a quiet place of repose.
+
+**`CP3|GODSEEKER_ENGINE_REPEAT_2`**
+
+> **Before** — Thou can not linger here, o coward of cowards! Step forth, and receive thine holy punishment!
+
+> **After** — Thou can not linger here, o coward of cowards! Step forth, and receive thy due punishment!
+
+**`UI|CHARM_DESC_19`**
+
+> **Before** — Said to contain the knowledge of past generations of shaman.<br><br>Increases the power of spells, dealing more damage to foes.
+
+> **After** — Said to contain the knowledge of past generations of adepts.<br><br>Increases the power of skills, dealing more damage to foes.
+
+**`CP3|GODSEEKER_ENGINE_2`**
+
+> **Before** — Ahh! Will the Gods not relieve Us of this troublesome speck? How it tests Us, seeing this worm raise its filthy weapon to the Gods!<page>Thou hast luck beyond luck, o speck! The Gods of this pantheon, for purpose beyond Our understanding, allow you amongst them.<page>Truly, the divine punishment they must be planning for you will be beyond all reckoning. Prepare thyself! Prepare thyself!
+
+> **After** — Ahh! Will the Luminaries not relieve Us of this troublesome speck? How it tests Us, seeing this worm raise its filthy weapon to the Luminaries!<page>Thou hast luck beyond luck, o speck! The Luminaries of this ascent, for purpose beyond Our understanding, allow you amongst them.<page>Truly, the terrible punishment they must be planning for you will be beyond all reckoning. Prepare thyself! Prepare thyself!
+
+**`Lore Tablets|DREAM_PLANT_01`**
+
+> **Before** — ...Sacred memories...<page>...Honoured souls...
+
+> **After** — ...Cherished memories...<page>...Honoured dead...
+
+**`Lore Tablets|DREAM_PLANT_REST_GLADE`**
+
+> **Before** — ...Sacred memories...<page>...Honoured souls...
+
+> **After** — ...Cherished memories...<page>...Honoured dead...
+
+**`General|PROLOGUE_EXCERPT_02`**
+
+> **Before** — For none could tame our savage souls yet you the challenge met,
+
+> **After** — For none could tame our savage hearts yet you the challenge met,
+
+**`Lore Tablets|RANDOM_POEM_STUFF`**
+
+> **Before** — In wilds beyond they speak your name with reverence and regret,For none could tame our savage souls yet you the challenge met,Under palest watch, you taught, you changed. Base instincts were redeemed,A world you gave to bug and beast as they had never dreamed.                                                          - Excerpt from Ode to Hallownest by Monomon the TeacherOur cherished dreams you granted and delivered more,But in dismay you found too late our desires had no end,What cost to tame our savagery? You gave your all and then gave more.Yet still desires lay unquenched, more dreams remained, your energies spent.Amongst it sprang a dreadful scourge,that forced return our aggressive urge,and turned us back to beasts or husks,Our souls consumed by light above.Within your corpse can still be heard the plaintiff cries of one,Who took our pain, and loss, and dreams inside itself to...Through it' pain we found a truth that must now be confessed,For nothing can contain such things but perfect emptiness.
+
+> **After** — In wilds beyond they speak your name with reverence and regret,For none could tame our savage hearts yet you the challenge met,Under palest watch, you taught, you changed. Base instincts were redeemed,A world you gave to bug and beast as they had never dreamed.                                                          - Excerpt from Ode to Hallownest by Monomon the TeacherOur cherished dreams you granted and delivered more,But in dismay you found too late our desires had no end,What cost to tame our savagery? You gave your all and then gave more.Yet still desires lay unquenched, more dreams remained, your energies spent.Amongst it sprang a dreadful scourge,that forced return our aggressive urge,and turned us back to beasts or husks,Our hearts consumed by light above.Within your corpse can still be heard the plaintiff cries of one,Who took our pain, and loss, and dreams inside itself to...Through it' pain we found a truth that must now be confessed,For nothing can contain such things but perfect emptiness.
+
+**`CP3|NIGHTMARE_GRIMM_GG_1`**
+
+> **Before** — Gods... bound by ritual...
+
+> **After** — Luminaries... bound to this stage...
+
+**`Enemy Dreams|NIGHTMARE_GRIMM_GG_1`**
+
+> **Before** — Gods... bound by ritual...
+
+> **After** — Luminaries... bound to this stage...
+
 ---
 
 ## 3. Deliberately left unchanged
@@ -521,6 +715,7 @@ with all other rewording already applied.
 | **SOUL** | a core game mechanic — 104 entries untouched, pending a decision |
 | **`salvation`** | the line glosses it itself: "The Kingdom's salvation, **the cure for the plague**" — rescue, not theology |
 | **`Saviour`** | Bretta's diary romance about Zote ("The White Saviour"), and "tiny saviour" — a rescuer in the ordinary sense |
+| **`charming`** | the ordinary adjective, unrelated to amulets — kept in all 4 places via exact overrides, so the `charm` rule cannot corrupt it into "embleming" |
 | **`chanting`** | left by choice — one use, Elderbug describing Jiji's cave as "extremely **sinister** chanting", framed as eerie rather than devotional |
 | **"Dreams revered"** (`DREAM_PLANT_REST_MAIN`) | untouched vanilla wording — the game's own secular use of *revered* |
 
@@ -536,29 +731,35 @@ final output, and both are intentional.
 
 | sheet | entries changed |
 |---|---:|
-| CP3 | 139 |
-| UI | 32 |
-| Journal | 22 |
-| Titles | 14 |
-| CP2 | 13 |
-| Minor NPC | 13 |
-| Achievements | 11 |
-| Lore Tablets | 11 |
-| Prompts | 9 |
+| CP3 | 147 |
+| UI | 92 |
+| Journal | 35 |
+| Achievements | 22 |
+| Titles | 21 |
+| CP2 | 19 |
+| Minor NPC | 17 |
+| Prompts | 17 |
+| Charm Slug | 14 |
+| Lore Tablets | 14 |
 | Relic Dealer | 9 |
+| Enemy Dreams | 8 |
 | Shaman | 8 |
-| Charm Slug | 5 |
-| Enemy Dreams | 4 |
-| Ghosts | 4 |
-| Backer Messages | 3 |
+| Ghosts | 6 |
+| Nailmasters | 5 |
+| Backer Messages | 4 |
+| Dream Witch | 4 |
+| Map Zones | 4 |
 | Jiji | 3 |
-| Dream Witch | 2 |
+| Credits List | 2 |
 | Elderbug | 2 |
-| Map Zones | 2 |
+| Quirrel | 2 |
+| Cornifer | 1 |
 | Dreamers | 1 |
+| General | 1 |
 | Hornet | 1 |
 | Iselda | 1 |
-| Quirrel | 1 |
+| MainMenu | 1 |
+| Nailsmith | 1 |
 | Sly | 1 |
 | Stag | 1 |
 | Zote | 1 |
@@ -569,30 +770,83 @@ final output, and both are intentional.
 
 ## 5. Roadmap
 
-The scheme covers **divine framing** and **magic**. These areas are identified but not implemented.
+The scheme covers **divine framing** and **magic**. Three workstreams remain, to be done in this
+order. They are largely independent — the charm problem is *not* a subset of the dream problem.
 
-### 5.1 Charms
+### 5.1 SOUL → SPARK  *(first)*
+
+135 word-instances across ~104 entries: `SOUL` 53, `Soul` 38, `soul` 31, `souls` 8, `Kingsoul` 2,
+`Worldsoul` 1, `Souls` 1, `Soulful` 1.
+
+**Decided: `SOUL` → `SPARK`.** It was the only candidate where every compound falls out naturally —
+*Spark Catcher*, *Spark Eater*, **Kingspark**, **Worldspark**, *Shade Spark*, *Spark Master* — and
+SOUL is rendered as white light in-game, so it fits visually. *Ember* was too fiery and collided
+with Grimm's flame; *Lumen* was already crowded by the Luminaries scheme.
+
+Beyond the rename:
+
+- **`Sanctum` must change too**, keeping the alliteration: *Soul Sanctum* → **Spark Spire**
+  (it is a tower in the City of Tears, so *spire* is also literally accurate).
+- **Drawing SPARK from living creatures** — *Soul Eater*: "used to draw SOUL from **still-living
+  creatures**" — is to be judged **case by case, not removed wholesale**. Taking something from a
+  living creature is not inherently objectionable; blood is taken from the living too.
+- `Soul Master` / `Soul Twister` / `Soul Warrior` (enemies) and the *Soul & Shade* achievement
+  follow the rename automatically.
+
+### 5.2 Charms  *(second)*
 
 86 entries — a core UI mechanic: charm names, 40+ descriptions, notches, menus.
 
+The concern is the word and the concept: a *charm* is an object worn for magical protection, i.e.
+an amulet. This is **independent of dreams** — only 4 of 45 charms touch dream content at all
+(*Dream Wielder*, *Dreamshield*, the *Kingsoul → Void Heart* chain, and *Grimmchild*'s "flame in
+dream").
+
 > **Solved approach:** term replacement is a plain substring `String.Replace` with no word
-> boundaries, and there are **4 occurrences of "charming"** (e.g. Grimm's "A charming performance…
-> a pleasure!", the Snail Adept's "Aren't you the charming one"). Those four get **exact overrides**
+> boundaries, and there are **4 occurrences of "charming"** (Grimm's "A charming performance… a
+> pleasure!", the Snail Adept's "Aren't you the charming one"). Those four get **exact overrides**
 > so a `charm → …` rule cannot corrupt them into "cresting".
 
-### 5.2 Dreams
+### 5.3 Dreams and the dead  *(third — largest, most entangled)*
 
 ~131 entries plus the 272-entry `Enemy Dreams` sheet. Forms: `dreams` 49, `Dream` 43, `dream` 31,
-`dreaming` 7, `Dreamborn` 7, `Dreamgate` 6, `Dreamers` 5, `Dreamshield` 1. Heavily entangled with
-mechanics and plot. Needs its own pass to separate ordinary sleeping from entering others' dreams.
+`dreaming` 7, `Dreams` 7, `Dreamborn` 7, `Dreamgate` 6, `dreamed` 5, `Dreamers` 5, `Dreamshield` 1.
 
-### 5.3 The dead depicted as acting
+**`dream` cannot be a single term rule.** It splits three ways:
 
-Addressed once already in `Stag|STAG_RESTINGGROUNDS`. Unreviewed: the `Ghosts` sheet (83 entries)
-and the dream-warrior lore, where a dead bug's persisting dream produces a figure resembling them.
-`ghost` 11, `spirit` 15.
+1. **Aspiration, and the lore about the dead** — the leading candidates are `hope` and `memory`.
+   *memory* is theologically tighter ("memories take the shape of those who have passed away" is
+   unambiguously not the person) and the game already glosses it that way itself: the Seer says
+   "This kingdom is full of **old memories**… Seek them out, reveal them, and gather Essence."
+   *hope* reads better in some names. **Undecided** — "Hope Nail" sounds better than "Memory Nail",
+   so the two may not resolve to the same word everywhere.
+2. **Ordinary sleeping** — "Troubled dreams beset the maiden", "In my dreams I could see it".
+   Neither *hope* nor *memory* fits. Leave, or reword individually.
+3. **Proper nouns**, decided one at a time — Dream Nail, Dreamgate, Dreamers, Dreamshield,
+   Dream Wielder, Dreamborn. `Dreamers` → **`Sleepers`** is a natural fit, since Monomon, Lurien
+   and Herrah literally sleep.
 
-### 5.4 Scope limit to keep in mind
+**The game's own text supports the framing.** `WITCH_HINT_XERO`: "Sometimes **dreams take the shape
+of** those who have passed away." The lore already says these are dreams shaped like the dead, not
+the dead persisting — so the work is mostly vocabulary layered on top of that.
+
+**Decided within this workstream:**
+
+- **`ghost`, `spirit` and `wraith` change.** Note *Howling Wraiths* is a spell name, and Hornet
+  calls the player character "**Ghost** of Hallownest".
+- **`Shade` stays.** It reads as *shadow*, and that iconography is central to the Knight and to the
+  game's lore. This covers *Shade Cloak*, *Lord of Shades*, and the death mechanic.
+- **`Essence`** (49) is in scope for review — "fragments of light that dreams are made of",
+  gathered from the dreams of the dead.
+- The achievements *Ascension*, *Awakening* and *Attunement* are all Essence/Dream Nail milestones,
+  so they resolve with this workstream.
+
+### 5.4 Deliberately out of scope
+
+- **The Soul Master's immortality claim** — "he robbed me of my immortality… I will live forever" —
+  is villainous delusion, and the story frames it as madness. Kept.
+
+### 5.5 Scope limit to keep in mind
 
 This mod changes **displayed text only** — the design rule that keeps it a pure reword and
 compatible with everything else. It cannot change mechanics. Renaming the Dream Nail does not stop
@@ -605,7 +859,12 @@ can only go so far.
 
 Generated by simulating the mod's own algorithm over all 4,089 dumped entries:
 
-- **313** entries changed, 3,776 untouched
-- **46** exact overrides, 267 via term rules
-- **80** term rules, **46** exact overrides
+- **465** entries changed, 3,624 untouched
+- **65** exact overrides, 400 via term rules
+- **106** term rules, **67** exact overrides
 - **0** replacement cascades (no rule's output may contain another rule's search key)
+- **0** substring corruptions (a rule firing inside a longer word — this is how
+  *melancholy* once became *melancluminous*, and it is why `charming`, `Charmed` and `spellcaster`
+  are exact overrides)
+- **0** article-agreement errors introduced ("a emblem", "An Primal")
+
