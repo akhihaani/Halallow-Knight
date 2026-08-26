@@ -71,6 +71,10 @@ sheet <TAB> key <TAB> original text
 
 Play through the content you care about — the file fills as you go. Each entry is recorded once.
 
+Setting `"dumpAll": true` instead writes **every** entry the game has loaded to
+`language-dump-all.tsv` in one go, so you don't have to reach a given area to see its text. It runs
+once per launch and is off by default.
+
 ### 2. Write your replacements
 
 Turn dump mode off and fill in either or both maps:
@@ -119,11 +123,51 @@ dotnet build -c Release -p:HkManaged="/path/to/Hollow Knight/.../Managed"
 Output is `bin/Release/HalallowKnight.dll`. It references the game's assemblies but bundles none of
 them, so nothing proprietary is redistributed.
 
+## What it changes
+
+**[REWORDS.md](REWORDS.md) documents every single change** — each term replacement, each
+individually rewritten line with its before-and-after, the reasoning behind the non-obvious
+choices, and, just as importantly, everything that was deliberately **left alone** and why.
+If you want to know exactly what this mod does to your game before installing it, read that.
+
+The shipped wording recasts divine authority as light and brilliance rather than godhood:
+
+| | |
+|---|---|
+| *higher beings* | *luminaries* |
+| *Godhome* | *Luminance* |
+| *the Pantheons* | *the Ascents* |
+| *Godseeker* | *Lightseeker* |
+| *Spell* | *Skill* |
+| *King's Idol* | *King's Effigy* |
+
+> *"**Higher beings**, these words are for you alone."* → *"**Luminaries**, these words are for you alone."*
+
+**313 of the game's 4,089 text entries are altered**; the other 3,776 are untouched. The scheme
+currently covers divine framing and magic. Charms, dreams and the depiction of the dead are noted
+as future work in REWORDS.md.
+
+Every release is verified by simulating the replacement engine over a full dump of the game's text,
+checking that no target word survives unintentionally and that no replacement rule corrupts
+another's output.
+
 ## Repository layout
 
 ```
 src/HalallowKnight/
   HalallowKnight.cs        the mod: hook, dump mode, replacement engine
   HalallowKnight.csproj    net472 build, cross-platform game detection
-  reword-config.json       default config (dump mode, empty maps)
+  reword-config.json       the shipped replacement list
+tools/
+  gen_rewords.py           regenerates REWORDS.md from the config, with verification
+REWORDS.md                 every change, and what was left alone
 ```
+
+## Contributing a different wording
+
+The replacement list is just JSON — you do not need to rebuild the mod to change it. Edit
+`reword-config.json` in your installed `Mods/HalallowKnight/` folder and restart the game.
+
+If you are changing the list in the repo, run `python3 tools/gen_rewords.py` afterwards to
+regenerate REWORDS.md. It applies the mod's own algorithm to a full language dump and reports the
+entry count, cascade check and override count, so the document cannot drift from the config.
