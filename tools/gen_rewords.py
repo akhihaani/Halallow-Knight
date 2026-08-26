@@ -15,6 +15,21 @@ DEFAULT_DUMP = os.path.expanduser(
     "~/Library/Application Support/Steam/steamapps/common/Hollow Knight/hollow_knight.app"
     "/Contents/Resources/Data/Managed/Mods/HalallowKnight/language-dump-all.tsv")
 
+# Each group is (title, explicit keys, catch-keywords). Explicit keys fix the ordering of the
+# important rules; catch-keywords sweep up the rest so nothing lands in a nameless "Other" bucket.
+CATCH = {
+    "Core god vocabulary": ("god", "pantheon", "higher being"),
+    "Religious vocabulary": ("worship", "sacred", "holy", "divine", "pray", "bless", "deit",
+                             "blasphem", "heretic", "reveren"),
+    "Rites, objects and places": ("ritual", "idol", "shrine", "temple", "penitent", "sanctum"),
+    "Magic and its practitioners": ("shaman", "spell", "conjur", "arcane", "hex", "enchant",
+                                    "mystical", "prophet", "magical"),
+    "SOUL, charms and articles": ("soul", "charm", "spark", " a ", " an ", "arcane"),
+    "Dreams, echoes and the dead": ("dream", "memor", "echo", "ghost", "spirit", "wraith",
+                                     "wisp", "shade", "sleep", "nightmare", "waking", "wishes"),
+    "Blessing and fortune": ("fortune", "boon"),
+}
+
 GROUPS = [
     ("Core god vocabulary", ["God of Gods","Higher beings","higher beings","Higher being","higher being",
         "Godseekers","Godseeker","Godmaster","Godtuner","Godhome","godliness","godless","Godly","godly",
@@ -222,8 +237,29 @@ does. Where a concern is about the *mechanic* rather than its *wording*, rewordi
 far. Everything above is a change of words."""
 
 
+def find_dump():
+    """The dump is Team Cherry's text, so it is never committed. Look in the obvious places."""
+    candidates = []
+    if len(sys.argv) > 1:
+        candidates.append(sys.argv[1])
+    candidates += [
+        os.path.join(ROOT, "language-dump-all.tsv"),   # repo root, gitignored
+        DEFAULT_DUMP,                                   # installed mod folder, macOS Steam
+    ]
+    for c in candidates:
+        if os.path.isfile(c):
+            return c
+    sys.exit(
+        "No language dump found. It is not committed, because it is Team Cherry's text.\n\n"
+        "To produce one: set \"dumpAll\": true in reword-config.json, launch the game once,\n"
+        "and it writes language-dump-all.tsv beside the mod DLL. Then either copy it to the\n"
+        "repo root or pass its path:\n\n"
+        "    python3 tools/gen_rewords.py /path/to/language-dump-all.tsv\n\n"
+        "Looked in:\n" + "\n".join("  " + c for c in candidates))
+
+
 def main():
-    dump = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_DUMP
+    dump = find_dump()
     cfg = json.load(open(CFG, encoding="utf-8"))
     T, E = cfg["termReplacements"], cfg["exactOverrides"]
     terms = sorted(T.items(), key=lambda kv: -len(kv[0]))
@@ -289,14 +325,34 @@ def main():
     o = []
     o.append(f"""# Reworded text
 
-Every change Halallow Knight makes, and every deliberate decision *not* to change something.
-Generated against Hollow Knight **1.5.78.11833** — {total:,} localisation entries, of which
+Everything Halallow Knight changes, and everything it deliberately leaves alone.
+
+Generated against Hollow Knight **1.5.78.11833**: {total:,} localisation entries, of which
 **{len(changed)} are altered** and {total - len(changed):,} are untouched.
 
-*This file is generated. Run `python3 tools/gen_rewords.py` after editing the config.*
+*This file is generated — run `python3 tools/gen_rewords.py` after editing the config. The counts
+and every check in section 6 come from simulating the mod's own algorithm over a full dump.*
 
-The wording scheme is **Luminaries**: divine authority is recast as light and brilliance rather
-than godhood, keeping Hollow Knight's register intact.
+## What is covered
+
+| area | approach |
+|---|---|
+| **Divine framing** | gods, worship, prayer, idols, shrines, temples, blessings, blasphemy. Divine authority is recast as light: *higher beings* → **luminaries**, *Godhome* → **Luminance**, *Pantheons* → **Ascents** |
+| **Magic** | spells, shamans, conjuring, enchantment, hexes, the arcane. *Spells* → **skills**, *Shaman* → **Adept** |
+| **SOUL** | → **SPARK**, chosen because every compound works: *Spark Catcher*, **Kingspark**, **Worldspark**, *Spark Spire* |
+| **Charms** | → **emblems**, a charm being an object worn for magical protection |
+| **Dreams and the dead** | the realm → **memory**, the lingering dead → **echoes**, *Dream Nail* → **Echo Nail**, *Dreamers* → **Sleepers**. Ghosts, spirits and wraiths renamed |
+| **Fate** | only lines claiming to *know* the future, hold power over it, or dismiss it. Believing in fate is untouched |
+
+## How to read this
+
+- **Section 1** is the term replacements — plain find-and-replace, applied longest-key-first.
+- **Section 2** is the exact overrides: {len(E)} entries rewritten in full, because a term rule
+  would have been wrong or clumsy. Each is listed with its reasoning and its before-and-after text.
+- **Section 3 is the one worth reading if you are judging the mod.** It records what was
+  deliberately **not** changed, and why. Most of the care here went into *not* over-reaching:
+  where a word carried several senses, each was judged separately rather than swapped wholesale.
+- **Section 6** is the verification, all of which must read zero.
 
 ---
 
@@ -305,11 +361,21 @@ than godhood, keeping Hollow Knight's register intact.
 Applied to the original string wherever they appear. Longer keys always match first, so compounds
 like `Godhome` are handled before the bare `god` inside them.""")
     listed = set()
-    for title, keys in GROUPS:
+    buckets = {title: list(keys) for title, keys in GROUPS}
+    for k in T:
+        if any(k in keys for _, keys in GROUPS):
+            continue
+        for title, words in CATCH.items():
+            if any(w in k.lower() for w in words):
+                buckets[title].append(k)
+                break
+    for title, _ in GROUPS:
+        rows_ = [k for k in buckets[title] if k in T and k not in listed]
+        if not rows_:
+            continue
         o.append(f"\n### {title}\n\n| original | becomes |\n|---|---|")
-        for k in keys:
-            if k in T:
-                o.append(f"| `{k}` | `{T[k]}` |"); listed.add(k)
+        for k in rows_:
+            o.append(f"| `{k}` | `{T[k]}` |"); listed.add(k)
     rest = [k for k in T if k not in listed]
     if rest:
         o.append("\n### Other\n\n| original | becomes |\n|---|---|")
