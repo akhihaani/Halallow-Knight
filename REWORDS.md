@@ -2,7 +2,7 @@
 
 Every change Halallow Knight makes, and every deliberate decision *not* to change something.
 Generated against Hollow Knight **1.5.78.11833** — 4,089 localisation entries, of which
-**465 are altered** and 3,624 are untouched.
+**556 are altered** and 3,533 are untouched.
 
 *This file is generated. Run `python3 tools/gen_rewords.py` after editing the config.*
 
@@ -140,6 +140,41 @@ like `Godhome` are handled before the bare `god` inside them.
 | `An Arcane` | `A Primal` |
 | `an Arcane` | `a Primal` |
 
+### Dreams, echoes and the dead
+
+| original | becomes |
+|---|---|
+| `Dream Nail` | `Echo Nail` |
+| `Dreamgate` | `Echogate` |
+| `Dream Gate` | `Echo Gate` |
+| `Dream Wielder` | `Echo Wielder` |
+| `Dreamshield` | `Echoshield` |
+| `Dreamborn` | `Echoborn` |
+| `Dreamers` | `Sleepers` |
+| `Dreamer` | `Sleeper` |
+| `Warrior Dream` | `Warrior Echo` |
+| `Hidden Dreams` | `Hidden Memories` |
+| `Lingering dream of a fallen warrior` | `Lingering echo of a fallen warrior` |
+| `I lie dreaming` | `I linger` |
+| `veil between dreams and waking` | `veil between memory and waking` |
+| `hidden dreams` | `hidden memories` |
+| `wishes and dreams` | `wishes and memories` |
+| `shape dreams` | `shape memories` |
+| `through dream` | `through memory` |
+| `dreams take the shape of` | `memories take the shape of` |
+| `dreams take root` | `memories take root` |
+| `that dreams are made of` | `that memories are made of` |
+| `Ghost` | `Shadow` |
+| `ghost` | `shadow` |
+| `Vengeful Spirit` | `Vengeful Wisp` |
+| `Howling Wraiths` | `Howling Shades` |
+| `The Wraiths requires` | `The Shades require` |
+| `Wraiths` | `Shades` |
+| `Spirits' Glade` | `Echoes' Glade` |
+| `Through dream I travel` | `Through nightmare I travel` |
+| `the flame in dream` | `the flame in nightmare` |
+| `In dreams... Born anew` | `In nightmare... Born anew` |
+
 ### Blessing and fortune
 
 | original | becomes |
@@ -151,6 +186,44 @@ like `Godhome` are handled before the bare `god` inside them.
 | `Blessed` | `Favoured` |
 | `blessed` | `favoured` |
 | ` by fortune` | ` by chance` |
+
+### Other
+
+| original | becomes |
+|---|---|
+| `dreams of Hallownest take shape` | `memories of Hallownest take shape` |
+| `May their spirits rest in peace` | `May they rest in peace` |
+| `a spirit that will fly forward` | `a wisp that will fly forward` |
+| `The spirit of a dead ancestor` | `The remnant of a dead ancestor` |
+| `waking world from our dreams` | `waking world from our memories` |
+| `amongst dreams and the dead` | `amongst memory and the dead` |
+| `land and dream and devotion` | `land and memory and devotion` |
+| `dreams of this old Kingdom` | `memories of this old Kingdom` |
+| `the dreams we leave behind` | `the memories we leave behind` |
+| `expanse of dream in past` | `expanse of nightmare in past` |
+| `become a dream yourself` | `become a memory yourself` |
+| `White Defender's dreams` | `White Defender's memory` |
+| `core of dream and mind` | `core of memory and mind` |
+| `a more powerful spirit` | `a more powerful wisp` |
+| `most hidden of dreams` | `most hidden of memories` |
+| `disturb those dreams` | `disturb those memories` |
+| `the dreams of others` | `the memories of others` |
+| `plagues their dreams` | `plagues their minds` |
+| `lights darkest dream` | `lights darkest night` |
+| `The spirit requires` | `The wisp requires` |
+| `A dream is endless` | `A memory is endless` |
+| `unleash the Spirit` | `unleash the Wisp` |
+| `No dream can hide` | `No memory can hide` |
+| `Such dreams are` | `Such memories are` |
+| `forgotten dream` | `forgotten memory` |
+| `Dream forgotten` | `Memory forgotten` |
+| `that old dream` | `that old memory` |
+| `Dreams revered` | `Memories revered` |
+| `way of dreams` | `way of memories` |
+| `to any dream` | `to any memory` |
+| `a Dreamgate` | `an Echogate` |
+| `A Dreamgate` | `An Echogate` |
+| `the Wraiths` | `the Shades` |
 
 **Notes on specific choices**
 
@@ -198,6 +271,27 @@ like `Godhome` are handled before the bare `god` inside them.
   *bu**sin**ess* and *cou**sin**s*. All three occurrences are exact overrides.
 - **`blasphemy` → `insolence`** — blasphemy presupposes the sacred order the mod removes.
 - **`heretic` → `outcast`** — Joni was cast out, which is what the line actually means.
+- **`dream` is never a blanket rule.** The word carries three unrelated senses, so every rule is
+  phrase-level. The *realm* becomes **memory** ("the veil between memory and waking", "remnants of
+  wishes and memories") — which is what the game already calls it: "This kingdom is full of **old
+  memories**… gather Essence." Ordinary **sleeping** is untouched (Bretta's "troubled dreams",
+  Zote's entire "Do Not Dream" precept), and so is **aspiration** ("Dreams of glory", and Galien's
+  "the hopes and dreams of the kingdom", which a blanket rule would have turned into "hopes and
+  hopes").
+- **The lingering dead become `echo`**, matching the **Echo Nail**: "Lingering echo of a fallen
+  warrior", "Warrior Echo", "I lie dreaming" → "I linger". An echo is plainly not the person.
+- **`Dreamers` → `Sleepers`** — Monomon, Lurien and Herrah are literally asleep.
+- **The Grimm Troupe's realm becomes `nightmare`**, not *memory* — the game already calls it that
+  (Nightmare King, Nightmare Heart, "Nightmare binds all"), so "Through nightmare I travel" is
+  native vocabulary rather than a substitution.
+- **`ghost` → `shadow`.** Ten of its eleven uses are Hornet's name for the player character, so
+  this is effectively the protagonist's name: "Shadow of Hallownest". It also keeps faith with
+  `Shade`, which is retained for its shadow meaning.
+- **`spirit` is not a blanket rule either.** *Vengeful Spirit* becomes **Vengeful Wisp** and
+  *Howling Wraiths* becomes **Howling Shades** (which also fixes Team Cherry's own grammar slip,
+  "The Wraiths **requires** SOUL" → "The Shades **require** SPARK"). The three ordinary-English
+  uses are left alone: "your unwavering spirit", "it'd do our spirits well", and Zote's "fire is a
+  type of hot spirit".
 - **`SOUL` → `SPARK`** was chosen because every compound falls out naturally: *Spark Catcher*,
   *Spark Eater*, **Kingspark**, **Worldspark**, *Shade Spark*, *Spark Master*. SOUL is rendered as
   white light in-game, so it also fits visually. `Soul Sanctum` → **Spark Spire** keeps the
@@ -219,7 +313,7 @@ like `Godhome` are handled before the bare `god` inside them.
 
 ## 2. Exact overrides
 
-67 entries are replaced outright rather than word-by-word, because a term rule would have
+70 entries are replaced outright rather than word-by-word, because a term rule would have
 been wrong or clumsy. **Exact overrides bypass term replacements entirely**, so each is written
 with all other rewording already applied.
 
@@ -292,6 +386,9 @@ with all other rewording already applied.
 | `Lore Tablets\|RANDOM_POEM_STUFF` | — |
 | `CP3\|NIGHTMARE_GRIMM_GG_1` | — |
 | `Enemy Dreams\|NIGHTMARE_GRIMM_GG_1` | — |
+| `Map Zones\|DREAM_WORLD` | — |
+| `Achievements\|ENDING_C_TITLE` | — |
+| `Shaman\|SHAMAN_TRAPPED_2` | — |
 
 ### Full text
 
@@ -533,7 +630,7 @@ with all other rewording already applied.
 
 > **Before** — A life defined by tragedy and triumph. A death marred by sorrow and regret. A spirit burdened by sins and memories. Better to wander the world than be cursed with glory.<br>- Xero
 
-> **After** — A life defined by tragedy and triumph. A death marred by sorrow and regret. A spirit burdened by regrets and memories. Better to wander the world than be cursed with glory.<br>- Xero
+> **After** — A life defined by tragedy and triumph. A death marred by sorrow and regret. An echo burdened by regrets and memories. Better to wander the world than be cursed with glory.<br>- Xero
 
 **`CP3|GG_S_BIGBEES`**
 
@@ -545,7 +642,7 @@ with all other rewording already applied.
 
 > **Before** — Dreamborn god of faith and betrayal
 
-> **After** — Dreamborn Luminary of loyalty and betrayal
+> **After** — Echoborn Luminary of loyalty and betrayal
 
 **`CP3|GODSEEKER_WATERWAYS_AWAKE_2`**
 
@@ -617,7 +714,7 @@ with all other rewording already applied.
 
 > **Before** — "A spark of red lights darkest dream,<br>Scarlet nightmares bright and wild,<br>Visions dance and flames do speak,<br>Burn the father, feed the child."<br>- 'The Grimm Troupe'
 
-> **After** — "A flicker of red lights darkest dream,<br>Scarlet nightmares bright and wild,<br>Visions dance and flames do speak,<br>Burn the father, feed the child."<br>- 'The Grimm Troupe'
+> **After** — "A flicker of red lights darkest night,<br>Scarlet nightmares bright and wild,<br>Visions dance and flames do speak,<br>Burn the father, feed the child."<br>- 'The Grimm Troupe'
 
 **`Backer Messages|BELIEVE_TAB_19`**
 
@@ -697,6 +794,24 @@ with all other rewording already applied.
 
 > **After** — Luminaries... bound to this stage...
 
+**`Map Zones|DREAM_WORLD`**
+
+> **Before** — Dream
+
+> **After** — Memory
+
+**`Achievements|ENDING_C_TITLE`**
+
+> **Before** — Dream No More
+
+> **After** — Wake At Last
+
+**`Shaman|SHAMAN_TRAPPED_2`**
+
+> **Before** — What is it? Are you wondering about this gate between us? Ohoho! It's a curious thing, but this door will not open until you have slain that creature lying in the heart of the temple.<page>Don't worry about it. I'm sure the spirits of my ancestors will be watching over you.
+
+> **After** — What is it? Are you wondering about this gate between us? Ohoho! It's a curious thing, but this door will not open until you have slain that creature lying in the heart of the vault.<page>Don't worry about it. I'm sure the memory of my ancestors will be with you.
+
 ---
 
 ## 3. Deliberately left unchanged
@@ -716,6 +831,10 @@ with all other rewording already applied.
 | **`salvation`** | the line glosses it itself: "The Kingdom's salvation, **the cure for the plague**" — rescue, not theology |
 | **`Saviour`** | Bretta's diary romance about Zote ("The White Saviour"), and "tiny saviour" — a rescuer in the ordinary sense |
 | **`charming`** | the ordinary adjective, unrelated to amulets — kept in all 4 places via exact overrides, so the `charm` rule cannot corrupt it into "embleming" |
+| **ordinary dreaming** | Bretta's "troubled dreams", Zote's "Do Not Dream" precept, "In my dreams I could see it", "What a strange dream" — sleeping is not the concern |
+| **dreams as aspiration** | "Dreams of glory", "don't let your past keep you from your dreams", and Galien's "the hopes and dreams of the kingdom" |
+| **`spirit`** as courage or morale | "your unwavering spirit", "it'd do our spirits well", Zote's "fire is a type of hot spirit" |
+| **`Shade`** | kept deliberately — it reads as *shadow*, and that iconography is central to the Knight and the game's lore. Covers Shade Cloak, Lord of Shades and the death mechanic. |
 | **`chanting`** | left by choice — one use, Elderbug describing Jiji's cave as "extremely **sinister** chanting", framed as eerie rather than devotional |
 | **"Dreams revered"** (`DREAM_PLANT_REST_MAIN`) | untouched vanilla wording — the game's own secular use of *revered* |
 
@@ -731,34 +850,34 @@ final output, and both are intentional.
 
 | sheet | entries changed |
 |---|---:|
-| CP3 | 147 |
-| UI | 92 |
-| Journal | 35 |
-| Achievements | 22 |
-| Titles | 21 |
-| CP2 | 19 |
-| Minor NPC | 17 |
-| Prompts | 17 |
+| CP3 | 158 |
+| UI | 103 |
+| Journal | 45 |
+| Dream Witch | 28 |
+| Prompts | 27 |
+| Achievements | 25 |
+| Titles | 22 |
+| CP2 | 20 |
+| Minor NPC | 19 |
+| Lore Tablets | 15 |
 | Charm Slug | 14 |
-| Lore Tablets | 14 |
+| Enemy Dreams | 11 |
 | Relic Dealer | 9 |
-| Enemy Dreams | 8 |
-| Shaman | 8 |
+| Shaman | 9 |
+| Hornet | 7 |
 | Ghosts | 6 |
+| Map Zones | 6 |
 | Nailmasters | 5 |
 | Backer Messages | 4 |
-| Dream Witch | 4 |
-| Map Zones | 4 |
+| Dreamers | 3 |
+| Elderbug | 3 |
 | Jiji | 3 |
+| Quirrel | 3 |
 | Credits List | 2 |
-| Elderbug | 2 |
-| Quirrel | 2 |
+| MainMenu | 2 |
 | Cornifer | 1 |
-| Dreamers | 1 |
 | General | 1 |
-| Hornet | 1 |
 | Iselda | 1 |
-| MainMenu | 1 |
 | Nailsmith | 1 |
 | Sly | 1 |
 | Stag | 1 |
@@ -768,90 +887,47 @@ final output, and both are intentional.
 
 ---
 
-## 5. Roadmap
+## 5. Status and open questions
 
-The scheme covers **divine framing** and **magic**. Three workstreams remain, to be done in this
-order. They are largely independent — the charm problem is *not* a subset of the dream problem.
+All three planned workstreams are complete.
 
-### 5.1 SOUL → SPARK  *(first)*
+| workstream | scope | outcome |
+|---|---|---|
+| **Divine framing** | god, worship, rites, places | done |
+| **Magic** | shamans, spells, conjuring, blessing, fortune | done |
+| **SOUL → SPARK** | 135 word-instances | done |
+| **Charms → Emblems** | 86 entries | done |
+| **Dreams and the dead** | ~131 entries plus ghosts and spells | done |
 
-135 word-instances across ~104 entries: `SOUL` 53, `Soul` 38, `soul` 31, `souls` 8, `Kingsoul` 2,
-`Worldsoul` 1, `Souls` 1, `Soulful` 1.
+### 5.1 Deliberate non-changes worth restating
 
-**Decided: `SOUL` → `SPARK`.** It was the only candidate where every compound falls out naturally —
-*Spark Catcher*, *Spark Eater*, **Kingspark**, **Worldspark**, *Shade Spark*, *Spark Master* — and
-SOUL is rendered as white light in-game, so it fits visually. *Ember* was too fiery and collided
-with Grimm's flame; *Lumen* was already crowded by the Luminaries scheme.
+Three words were investigated and **kept**, because a blanket rule would have done more harm than
+good. Each is recorded in section 3 with its reasoning:
 
-Beyond the rename:
+- **`faith`** — 9 of 13 uses are idiomatic trust ("Have faith in me!"). Only the 4 devotional uses
+  are overridden.
+- **`spirit`** — 3 uses mean courage or morale ("your unwavering spirit").
+- **`Shade`** — reads as *shadow*, and that iconography is central to the Knight.
 
-- **`Sanctum` must change too**, keeping the alliteration: *Soul Sanctum* → **Spark Spire**
-  (it is a tower in the City of Tears, so *spire* is also literally accurate).
-- **Drawing SPARK from living creatures** — *Soul Eater*: "used to draw SOUL from **still-living
-  creatures**" — is to be judged **case by case, not removed wholesale**. Taking something from a
-  living creature is not inherently objectionable; blood is taken from the living too.
-- `Soul Master` / `Soul Twister` / `Soul Warrior` (enemies) and the *Soul & Shade* achievement
-  follow the rename automatically.
+**`Essence` was reviewed and kept.** The word means an intrinsic nature or a concentrated extract;
+it is neither religious nor a soul word. The earlier passes also settled the framing around it, so
+it now reads as crystallised memory rather than anything belonging to the dead: "Essence… the
+precious fragments of light that **memories** are made of", "Essence can be found wherever
+**memories** take root", "remnants of wishes and **memories**". All 49 entries read clean.
 
-### 5.2 Charms  *(second)*
+### 5.2 Still open
 
-86 entries — a core UI mechanic: charm names, 40+ descriptions, notches, menus.
+- **`aura`** (5 entries) — "the aura of a fierce warrior", "I don't really like the aura about it".
+  Mostly ordinary "presence". Never ruled on.
+- **`Penitent Moth`** became *Remorseful Moth*; the wider vocabulary of remorse is untouched.
 
-The concern is the word and the concept: a *charm* is an object worn for magical protection, i.e.
-an amulet. This is **independent of dreams** — only 4 of 45 charms touch dream content at all
-(*Dream Wielder*, *Dreamshield*, the *Kingsoul → Void Heart* chain, and *Grimmchild*'s "flame in
-dream").
-
-> **Solved approach:** term replacement is a plain substring `String.Replace` with no word
-> boundaries, and there are **4 occurrences of "charming"** (Grimm's "A charming performance… a
-> pleasure!", the Snail Adept's "Aren't you the charming one"). Those four get **exact overrides**
-> so a `charm → …` rule cannot corrupt them into "cresting".
-
-### 5.3 Dreams and the dead  *(third — largest, most entangled)*
-
-~131 entries plus the 272-entry `Enemy Dreams` sheet. Forms: `dreams` 49, `Dream` 43, `dream` 31,
-`dreaming` 7, `Dreams` 7, `Dreamborn` 7, `Dreamgate` 6, `dreamed` 5, `Dreamers` 5, `Dreamshield` 1.
-
-**`dream` cannot be a single term rule.** It splits three ways:
-
-1. **Aspiration, and the lore about the dead** — the leading candidates are `hope` and `memory`.
-   *memory* is theologically tighter ("memories take the shape of those who have passed away" is
-   unambiguously not the person) and the game already glosses it that way itself: the Seer says
-   "This kingdom is full of **old memories**… Seek them out, reveal them, and gather Essence."
-   *hope* reads better in some names. **Undecided** — "Hope Nail" sounds better than "Memory Nail",
-   so the two may not resolve to the same word everywhere.
-2. **Ordinary sleeping** — "Troubled dreams beset the maiden", "In my dreams I could see it".
-   Neither *hope* nor *memory* fits. Leave, or reword individually.
-3. **Proper nouns**, decided one at a time — Dream Nail, Dreamgate, Dreamers, Dreamshield,
-   Dream Wielder, Dreamborn. `Dreamers` → **`Sleepers`** is a natural fit, since Monomon, Lurien
-   and Herrah literally sleep.
-
-**The game's own text supports the framing.** `WITCH_HINT_XERO`: "Sometimes **dreams take the shape
-of** those who have passed away." The lore already says these are dreams shaped like the dead, not
-the dead persisting — so the work is mostly vocabulary layered on top of that.
-
-**Decided within this workstream:**
-
-- **`ghost`, `spirit` and `wraith` change.** Note *Howling Wraiths* is a spell name, and Hornet
-  calls the player character "**Ghost** of Hallownest".
-- **`Shade` stays.** It reads as *shadow*, and that iconography is central to the Knight and to the
-  game's lore. This covers *Shade Cloak*, *Lord of Shades*, and the death mechanic.
-- **`Essence`** (49) is in scope for review — "fragments of light that dreams are made of",
-  gathered from the dreams of the dead.
-- The achievements *Ascension*, *Awakening* and *Attunement* are all Essence/Dream Nail milestones,
-  so they resolve with this workstream.
-
-### 5.4 Deliberately out of scope
-
-- **The Soul Master's immortality claim** — "he robbed me of my immortality… I will live forever" —
-  is villainous delusion, and the story frames it as madness. Kept.
-
-### 5.5 Scope limit to keep in mind
+### 5.3 Scope limit to keep in mind
 
 This mod changes **displayed text only** — the design rule that keeps it a pure reword and
-compatible with everything else. It cannot change mechanics. Renaming the Dream Nail does not stop
-it entering dreams. Where a concern is about the *mechanic* rather than its *wording*, rewording
-can only go so far.
+compatible with everything else. It cannot change mechanics. Renaming the Dream Nail to the Echo
+Nail does not stop it entering dreams, and renaming charms does not change what equipping them
+does. Where a concern is about the *mechanic* rather than its *wording*, rewording can only go so
+far. Everything above is a change of words.
 
 ---
 
@@ -859,12 +935,15 @@ can only go so far.
 
 Generated by simulating the mod's own algorithm over all 4,089 dumped entries:
 
-- **465** entries changed, 3,624 untouched
-- **65** exact overrides, 400 via term rules
-- **106** term rules, **67** exact overrides
+- **556** entries changed, 3,533 untouched
+- **68** exact overrides, 488 via term rules
+- **169** term rules, **70** exact overrides
 - **0** replacement cascades (no rule's output may contain another rule's search key)
 - **0** substring corruptions (a rule firing inside a longer word — this is how
   *melancholy* once became *melancluminous*, and it is why `charming`, `Charmed` and `spellcaster`
   are exact overrides)
 - **0** article-agreement errors introduced ("a emblem", "An Primal")
+- **0** stale exact overrides (written before a later rule existed, so the rule could
+  never reach them — this is how "Soul Sanctum", "charm" and "lights darkest dream" survived
+  three separate renames)
 
