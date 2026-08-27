@@ -1,10 +1,20 @@
-# Halallow Knight
+# Halallow Knight — a halal / Muslim-friendly Hollow Knight mod
 
-A client-side [Hollow Knight](https://hollowknight.com) mod that rewords the game's text, replacing
-religious and supernatural framing with neutral alternatives.
+A client-side [Hollow Knight](https://hollowknight.com) mod that removes the game's religious and
+supernatural framing — gods, worship, prayer, idols, magic, spells, souls, charms and the depiction
+of the dead — by rewording the text into neutral alternatives.
 
 It changes **words only**. Every boss, bug, item, area, ability and piece of geo is exactly as Team
-Cherry made them. Nothing about how the game plays is touched.
+Cherry made them. Nothing about how the game plays is touched, and no game files are modified.
+
+**Who this is for.** It was built from an Islamic perspective, by a Muslim player who wanted to
+play Hollow Knight without its shirk and its magic framing. But nothing about it is faith-specific:
+if you would rather play without gods, worship, magic or necromancy in the text for any reason —
+religious, parental, or simply personal taste — it does the same job. The wording is also
+[yours to change](#using-your-own-wording): it is plain JSON, no rebuild required.
+
+> Looking to remove the **music** as well? See
+> **[Halallow Knight Music Remover](https://github.com/akhihaani/Halallow-Knight-Music-Remover)**.
 
 ## What it changes
 
@@ -46,6 +56,41 @@ Some examples:
 
 The wording is one person's choices, not a fixed requirement of the mod. If you want different
 words, [swap them](#using-your-own-wording) — no rebuild needed.
+
+## Frequently asked
+
+**Is there a halal mod for Hollow Knight?**
+Yes — this one. It rewords the game's divine framing, magic, souls, charms, dreams and the dead
+into neutral language, without changing how the game plays.
+
+**Does it remove the gods from Hollow Knight?**
+It removes the *framing* of them as gods. Godhome becomes Luminance, the Pantheons become the
+Ascents, the Godseeker becomes the Lightseeker, and "higher beings" become "luminaries". The bosses
+themselves are untouched — this is a text mod, not a gameplay mod.
+
+**Does it remove magic and spells?**
+The wording, yes. Spells become skills, the Shaman becomes the Adept, and conjuring, hexes,
+enchantment and the arcane are all reworded. The abilities still work exactly as before.
+
+**What about SOUL, charms and the Dream Nail?**
+SOUL becomes SPARK, charms become emblems, and the Dream Nail becomes the Echo Nail. The dream
+realm becomes memory and the lingering dead become echoes.
+
+**Does it remove the music?**
+Not this mod — music is handled by the separate
+[Music Remover](https://github.com/akhihaani/Halallow-Knight-Music-Remover).
+
+**Is it haram to play Hollow Knight?**
+That is not a question a README can answer, and this mod does not claim to settle it. What it does
+is remove a specific and well-defined set of things from the game's text, all of them listed in
+[REWORDS.md](REWORDS.md), so you can judge for yourself what remains.
+
+**Does it work with other mods, and with multiplayer?**
+Yes. It hooks a single localisation call and nothing else, so it has almost no surface to conflict
+with. The reworded text is local to you, so other players see their own game unchanged.
+
+**Can I change the wording?**
+Yes, and you do not need to rebuild anything. See [Using your own wording](#using-your-own-wording).
 
 ## Companion mod: Music Remover
 
@@ -224,6 +269,26 @@ tools/
   check_coverage.py        compares the config against text the game actually requests
 REWORDS.md                 every change, and everything left alone, with reasoning
 ```
+
+## Getting it into Lumafly
+
+Lumafly's searchable mod list is driven by **ModLinks** — a single `ModLinks.xml` in the
+[hk-modding/modlinks](https://github.com/hk-modding/modlinks) repository, listing every mod with
+its download URL and a SHA256 of the release asset. Lumafly downloads that file on startup, which
+is how it knows what exists. Getting listed means opening a pull request adding one `<Manifest>`
+block.
+
+A ready-to-submit entry lives in [docs/modlinks-entry.xml](docs/modlinks-entry.xml).
+
+**The checksum must match the release asset exactly**, or Lumafly refuses the download. After
+cutting any new release, regenerate it:
+
+```bash
+shasum -a 256 dist/HalallowKnight-<version>.zip | awk '{print toupper($1)}'
+```
+
+and open another pull request updating `<Version>` and `SHA256`. That is the ongoing cost of being
+listed: every release needs a modlinks PR, or Lumafly keeps serving the old one.
 
 ## Credits
 

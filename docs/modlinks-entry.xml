@@ -1,0 +1,26 @@
+<!-- Entry for HollowKnight.ModLinks, which is the database Lumafly reads.
+     Submit as a pull request to:
+       https://github.com/hk-modding/modlinks   (file: ModLinks.xml)
+     Insert in alphabetical order by <Name>.
+
+     The SHA256 must match the release asset exactly. Regenerate after any new release with:
+       shasum -a 256 dist/HalallowKnight-<version>.zip | awk '{print toupper($1)}'
+-->
+<Manifest>
+    <Name>Halallow Knight</Name>
+    <Description>Rewords the game's religious and supernatural framing - gods, worship, magic, souls, charms, dreams and the dead - into neutral alternatives. Text only: no gameplay, scenes or game files are touched.</Description>
+    <Version>1.0.0.0</Version>
+    <Link SHA256="1383E9FE2A8CCD42C9189F5AF9041DE0C356E6DB8C6C26A8FE6F1A12C127EAF4">
+        <![CDATA[https://github.com/akhihaani/Halallow-Knight/releases/download/v1.0.0/HalallowKnight-1.0.0.zip]]>
+    </Link>
+    <Dependencies />
+    <Repository>
+        <![CDATA[https://github.com/akhihaani/Halallow-Knight]]>
+    </Repository>
+    <Tags>
+        <Tag>Cosmetic</Tag>
+    </Tags>
+    <Authors>
+        <Author>akhihaani</Author>
+    </Authors>
+</Manifest>
