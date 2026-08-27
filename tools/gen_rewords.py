@@ -30,6 +30,14 @@ CATCH = {
     "Blessing and fortune": ("fortune", "boon"),
 }
 
+# Sheets the game does not route through Language.Get, so the hook never sees them and no rule
+# can reach them. Confirmed by recording real hook traffic: a full pass through the achievements
+# menu produced 56 entries across 7 other sheets and zero from this one. Hollow Knight's
+# achievement names and descriptions come from the platform (Steam), not the language files.
+UNREACHABLE_SHEETS = {
+    "Achievements": "Steam achievement data, not the game's language files",
+}
+
 GROUPS = [
     ("Core god vocabulary", ["God of Gods","Higher beings","higher beings","Higher being","higher being",
         "Godseekers","Godseeker","Godmaster","Godtuner","Godhome","godliness","godless","Godly","godly",
@@ -194,7 +202,7 @@ NOTES = """**Notes on specific choices**
   Ascent", "An Arcane Egg" → "**A** Primal Egg". These are longer keys, so longest-first applies
   them before the bare word rule."""
 
-ROADMAP = """## 5. Status and open questions
+ROADMAP = """## 6. Status and open questions
 
 All three planned workstreams are complete.
 
@@ -206,7 +214,7 @@ All three planned workstreams are complete.
 | **Charms → Emblems** | 86 entries | done |
 | **Dreams and the dead** | ~131 entries plus ghosts and spells | done |
 
-### 5.1 Deliberate non-changes worth restating
+### 6.1 Deliberate non-changes worth restating
 
 Three words were investigated and **kept**, because a blanket rule would have done more harm than
 good. Each is recorded in section 3 with its reasoning:
@@ -222,13 +230,13 @@ it now reads as crystallised memory rather than anything belonging to the dead: 
 precious fragments of light that **memories** are made of", "Essence can be found wherever
 **memories** take root", "remnants of wishes and **memories**". All 49 entries read clean.
 
-### 5.2 Still open
+### 6.2 Still open
 
 - **`aura`** (5 entries) — "the aura of a fierce warrior", "I don't really like the aura about it".
   Mostly ordinary "presence". Never ruled on.
 - **`Penitent Moth`** became *Remorseful Moth*; the wider vocabulary of remorse is untouched.
 
-### 5.3 Scope limit to keep in mind
+### 6.3 Scope limit to keep in mind
 
 This mod changes **displayed text only** — the design rule that keeps it a pure reword and
 compatible with everything else. It cannot change mechanics. Renaming the Dream Nail to the Echo
@@ -279,6 +287,9 @@ def main():
         if res != orig:
             changed.append((sheet, key, "exact" if ck in E else "term", orig, res))
 
+    unreachable = [c for c in changed if c[0] in UNREACHABLE_SHEETS]
+    effective = [c for c in changed if c[0] not in UNREACHABLE_SHEETS]
+
     cascades = [(k, s) for k, v in T.items() for s in T if s in v and s != k]
 
     # Substring corruption: a rule key sitting inside a longer word, with no longer rule and no
@@ -328,10 +339,12 @@ def main():
 Everything Halallow Knight changes, and everything it deliberately leaves alone.
 
 Generated against Hollow Knight **1.5.78.11833**: {total:,} localisation entries, of which
-**{len(changed)} are altered** and {total - len(changed):,} are untouched.
+**{len(effective)} are altered** and {total - len(effective):,} are left as Team Cherry wrote them.
+
+A further **{len(unreachable)} rules match text the mod cannot reach** — see section 4.
 
 *This file is generated — run `python3 tools/gen_rewords.py` after editing the config. The counts
-and every check in section 6 come from simulating the mod's own algorithm over a full dump.*
+and every check in section 7 come from simulating the mod's own algorithm over a full dump.*
 
 ## What is covered
 
@@ -352,7 +365,8 @@ and every check in section 6 come from simulating the mod's own algorithm over a
 - **Section 3 is the one worth reading if you are judging the mod.** It records what was
   deliberately **not** changed, and why. Most of the care here went into *not* over-reaching:
   where a word carried several senses, each was judged separately rather than swapped wholesale.
-- **Section 6** is the verification, all of which must read zero.
+- **Section 4** lists text the mod **cannot** reach, and why.
+- **Section 7** is the verification, all of which must read zero.
 
 ---
 
@@ -443,7 +457,37 @@ final output, and both are intentional.
 
 ---
 
-## 4. Impact by sheet
+## 4. What the mod cannot reach
+
+Some of the game's text does not pass through the localisation call this mod hooks, so no rule can
+ever change it. This was found by recording **real hook traffic** rather than by reading the
+language files: a full pass through the achievements menu produced 56 entries across seven other
+sheets and **zero** from this one.
+
+| sheet | why | rules affected |
+|---|---|---:|
+@@UNREACHABLE_TABLE@@
+
+**`Achievements`** covers the in-game achievement list. Hollow Knight's achievements are Steam
+achievements, and their names and descriptions are defined on Steamworks rather than in the game's
+language files, so the game never asks the localisation system for them. Affected entries include
+*Charmed*, *Enchanted*, *Soulful*, *Worldsoul*, *Steel Soul*, *Dream No More* and all four Pantheon
+completions.
+
+The rules are **kept in the config anyway**. They cost nothing, they are correct, and they would
+begin working if a future version of the game or the Modding API ever routed that text through the
+hook. They are simply excluded from the headline count above, because claiming them as changes
+would be false.
+
+> **A caution about verification.** Sections 1-3 are validated against a full dump of the language
+> *files*, which proves a string exists but not that the game ever requests it. Achievements are the
+> one case found so far where those differ. Others may exist, and the honest way to find them is to
+> record hook traffic while playing and compare it against the config — `tools/check_coverage.py`
+> does exactly that.
+
+---
+
+## 5. Impact by sheet
 
 | sheet | entries changed |
 |---|---:|""")
@@ -454,11 +498,12 @@ final output, and both are intentional.
     o.append(f"""
 ---
 
-## 6. Verification
+## 7. Verification
 
 Generated by simulating the mod's own algorithm over all {total:,} dumped entries:
 
-- **{len(changed)}** entries changed, {total - len(changed):,} untouched
+- **{len(effective)}** entries changed, {total - len(effective):,} untouched
+- **{len(unreachable)}** further rules match unreachable text (section 4)
 - **{sum(1 for c in changed if c[2] == 'exact')}** exact overrides, {sum(1 for c in changed if c[2] == 'term')} via term rules
 - **{len(T)}** term rules, **{len(E)}** exact overrides
 - **{len(cascades)}** replacement cascades (no rule's output may contain another rule's search key)
@@ -471,7 +516,10 @@ Generated by simulating the mod's own algorithm over all {total:,} dumped entrie
   three separate renames){chr(10) + chr(10).join(f"  - `{k}`" for k in stale[:10]) if stale else ""}
 {chr(10).join(f"  - `{a}`: {b!r}" for a, b in articles[:10]) if articles else ""}
 """)
-    open(OUT, "w", encoding="utf-8").write("\n".join(o))
+    text = "\n".join(o).replace("@@UNREACHABLE_TABLE@@", "\n".join(
+        f"| `{sh}` | {why} | {sum(1 for c in unreachable if c[0] == sh)} |"
+        for sh, why in UNREACHABLE_SHEETS.items()))
+    open(OUT, "w", encoding="utf-8").write(text)
     print(f"REWORDS.md: {len(changed)} changed / {total} entries, {len(T)} terms, {len(E)} overrides, {len(cascades)} cascades")
 
 
