@@ -4,3 +4,4 @@ language-dump.tsv
 language-dump-all.tsv
 audio-log.tsv
 dist/
+.DS_Store
