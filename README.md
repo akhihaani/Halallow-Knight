@@ -8,7 +8,7 @@ Cherry made them. Nothing about how the game plays is touched.
 
 ## What it changes
 
-Six areas, **564 of the game's 4,089 text entries**:
+Six areas, **539 of the game's 4,089 text entries**:
 
 | | |
 |---|---|
@@ -19,7 +19,7 @@ Six areas, **564 of the game's 4,089 text entries**:
 | **Dreams and the dead** | the dream-realm becomes **memory**, the lingering dead become **echoes**, and the *Dream Nail* becomes the **Echo Nail**. *Dreamers* become **Sleepers**. Ghosts, spirits and wraiths are renamed. |
 | **Fate** | lines that claim to *know* the future, hold power over it, or dismiss it. Believing in fate is left alone; only claiming mastery of it is changed. |
 
-The remaining 3,525 entries are untouched, and a great deal was left alone **deliberately** —
+The remaining 3,550 entries are untouched, and a great deal was left alone **deliberately** —
 ordinary sleeping and dreaming, *faith* meaning trust, *spirit* meaning courage, `Shade` for its
 shadow imagery. Where a word had several senses, each was judged separately rather than swapped
 wholesale.
@@ -94,6 +94,9 @@ Lumafly's **manual install** button does this for you on any OS.
 The folder needs `HalallowKnight.dll` and `reword-config.json` together — the DLL alone changes
 nothing, since all the wording lives in the JSON. If it loaded, the mod's name and version appear
 in the top-left of the title screen.
+
+The version shown comes from the **config**, not the DLL, so editing the wording is enough to bump
+it. That is how you confirm at a glance that the game picked up the version you meant.
 
 **Back up your saves before first run**, as with any mod. They live in
 `.../unity.Team Cherry.Hollow Knight/` (`%APPDATA%` on Windows, `~/Library/Application Support/`
@@ -186,8 +189,20 @@ This regenerates REWORDS.md and reports the entry count alongside four checks, a
 zero: replacement cascades, substring corruptions, article-agreement errors (`a emblem`,
 `An Primal`), and stale overrides.
 
-The dump is not committed — it is Team Cherry's text, not ours. Produce your own with
-`"dumpAll": true` as above.
+**That check has a limit worth understanding.** It reads the language *files*, which proves a
+string exists but not that the game ever asks for it through the call this mod hooks. Hollow
+Knight's **achievement names come from Steam**, not the language files, so 25 otherwise-correct
+rules can never fire. They are kept in the config, and excluded from the count above.
+
+To find any other such gaps, record what the game really requests and compare:
+
+```bash
+# set "dumpMode": true, play for a while, then:
+python3 tools/check_coverage.py [path/to/language-dump.tsv]
+```
+
+Neither dump is committed — they are Team Cherry's text, not ours. Produce your own with
+`"dumpAll": true` or `"dumpMode": true` as above.
 
 ## Repository layout
 
@@ -198,6 +213,7 @@ src/HalallowKnight/
   reword-config.json       the shipped wording
 tools/
   gen_rewords.py           regenerates REWORDS.md and runs the verification checks
+  check_coverage.py        compares the config against text the game actually requests
 REWORDS.md                 every change, and everything left alone, with reasoning
 ```
 
