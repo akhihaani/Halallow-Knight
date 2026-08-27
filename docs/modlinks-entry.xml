@@ -1,22 +1,36 @@
-<!-- Entry for HollowKnight.ModLinks, which is the database Lumafly reads.
-     Submit as a pull request to:
-       https://github.com/hk-modding/modlinks   (file: ModLinks.xml)
-     Insert in alphabetical order by <Name>.
+<!-- Entry for hk-modding/modlinks, the database Lumafly reads.
 
-     The SHA256 must match the release asset exactly. Regenerate after any new release with:
+     Easiest route (recommended by the maintainers):
+       1. Open https://github.com/hk-modding/modlinks/blob/main/ModLinks.xml
+       2. Click the pencil icon, paste this block in alphabetical order by <Name>
+       3. "Commit Changes" -> "Propose Changes"; GitHub makes the fork, branch and PR for you
+
+     <Name> is the folder the mod is installed into, so it must match the DLL name and must not
+     contain spaces. The release zip has its files at the root - the installer creates the folder.
+
+     The SHA256 must match the release asset exactly or CI fails and Lumafly refuses the download.
+     After any new release:
        shasum -a 256 dist/HalallowKnight-<version>.zip | awk '{print toupper($1)}'
+     then open another PR updating <Version> and SHA256.
 -->
 <Manifest>
-    <Name>Halallow Knight</Name>
+    <Name>HalallowKnight</Name>
+    <DisplayName>Halallow Knight</DisplayName>
     <Description>Rewords the game's religious and supernatural framing - gods, worship, magic, souls, charms, dreams and the dead - into neutral alternatives. Text only: no gameplay, scenes or game files are touched.</Description>
     <Version>1.0.0.0</Version>
-    <Link SHA256="1383E9FE2A8CCD42C9189F5AF9041DE0C356E6DB8C6C26A8FE6F1A12C127EAF4">
+    <Link SHA256="0761AB7CA9F1BDCFD2BD5EB087BE5ABE03B6AFD6D1B8626AAA109F66A78C8247">
         <![CDATA[https://github.com/akhihaani/Halallow-Knight/releases/download/v1.0.0/HalallowKnight-1.0.0.zip]]>
     </Link>
     <Dependencies />
     <Repository>
         <![CDATA[https://github.com/akhihaani/Halallow-Knight]]>
     </Repository>
+    <ReadMe>
+        <![CDATA[https://github.com/akhihaani/Halallow-Knight/raw/refs/heads/main/README.md]]>
+    </ReadMe>
+    <Issues>
+        <![CDATA[https://github.com/akhihaani/Halallow-Knight/issues]]>
+    </Issues>
     <Tags>
         <Tag>Cosmetic</Tag>
     </Tags>

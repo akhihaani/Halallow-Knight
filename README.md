@@ -133,16 +133,18 @@ Support for the newer game build is planned once the Modding API supports it.
 
 ## Installing
 
-Drop the `HalallowKnight/` folder into your game's `Mods` folder. The same DLL works on all three
-platforms.
+**Easiest:** install it from [Lumafly](https://themulhima.github.io/Lumafly/), which handles
+everything for you.
+
+**By hand:** create a folder called `HalallowKnight` inside your game's `Mods` folder and unzip the
+release into it, so you end up with `Mods/HalallowKnight/HalallowKnight.dll`. The same DLL works on
+all three platforms.
 
 | OS | `Mods` folder, under `.../steamapps/common/Hollow Knight/` |
 |---|---|
 | Windows | `hollow_knight_Data\Managed\Mods\` |
 | Linux | `hollow_knight_Data/Managed/Mods/` |
 | macOS | `hollow_knight.app/Contents/Resources/Data/Managed/Mods/` |
-
-Lumafly's **manual install** button does this for you on any OS.
 
 The folder needs `HalallowKnight.dll` and `reword-config.json` together — the DLL alone changes
 nothing, since all the wording lives in the JSON. If it loaded, the mod's name and version appear

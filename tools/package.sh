@@ -16,18 +16,22 @@ DIST="$ROOT/dist"
 VERSION="${1:-$(python3 -c "import json;print(json.load(open('$SRC/reword-config.json'))['version'])")}"
 
 echo "Packaging $NAME $VERSION"
+# Files go at the ZIP ROOT, not inside a folder. Mod installers create Mods/<Name>/ themselves
+# and extract into it, so a wrapper folder would nest the DLL one level too deep and stop the
+# Modding API finding it. Every mod in modlinks packages this way.
 rm -rf "$DIST"
-mkdir -p "$DIST/$NAME"
+mkdir -p "$DIST/staging"
 
 dotnet build "$SRC/$NAME.csproj" -c Release -v minimal
 
-cp "$SRC/bin/Release/$NAME.dll" "$DIST/$NAME/"
-cp "$SRC/reword-config.json"    "$DIST/$NAME/"
-cp "$ROOT/README.md"            "$DIST/$NAME/"
-cp "$ROOT/REWORDS.md"           "$DIST/$NAME/"
+cp "$SRC/bin/Release/$NAME.dll" "$DIST/staging/"
+cp "$SRC/reword-config.json"    "$DIST/staging/"
+cp "$ROOT/README.md"            "$DIST/staging/"
+cp "$ROOT/REWORDS.md"           "$DIST/staging/"
 
 ZIP="$DIST/$NAME-$VERSION.zip"
-( cd "$DIST" && zip -qr "$(basename "$ZIP")" "$NAME" )
+( cd "$DIST/staging" && zip -qr "../$(basename "$ZIP")" . )
+rm -rf "$DIST/staging"
 
 echo
 echo "  $ZIP"
