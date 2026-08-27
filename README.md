@@ -49,8 +49,9 @@ words, [swap them](#using-your-own-wording) — no rebuild needed.
 
 ## Companion mod: Music Remover
 
-**Halallow Knight Music Remover** removes the game's music while keeping sound effects and
-atmosphere. It lives in its own repository, and is a **separate mod on purpose** — this mod hooks
+**[Halallow Knight Music Remover](https://github.com/akhihaani/Halallow-Knight-Music-Remover)**
+removes the game's music while keeping sound effects and atmosphere. It lives in its own
+repository, and is a **separate mod on purpose** — this mod hooks
 the localisation call and nothing else, and that restraint is what makes it conflict-free. Audio
 work needs deeper hooks, so it is kept apart. Install either, or both.
 
