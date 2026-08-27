@@ -47,6 +47,13 @@ Some examples:
 The wording is one person's choices, not a fixed requirement of the mod. If you want different
 words, [swap them](#using-your-own-wording) — no rebuild needed.
 
+## Companion mod: Music Remover
+
+**Halallow Knight Music Remover** removes the game's music while keeping sound effects and
+atmosphere. It lives in its own repository, and is a **separate mod on purpose** — this mod hooks
+the localisation call and nothing else, and that restraint is what makes it conflict-free. Audio
+work needs deeper hooks, so it is kept apart. Install either, or both.
+
 ## How it works
 
 Hollow Knight routes essentially all player-facing text — lore tablets, boss titles, area names,
@@ -208,7 +215,7 @@ Neither dump is committed — they are Team Cherry's text, not ours. Produce you
 
 ```
 src/HalallowKnight/
-  HalallowKnight.cs        the mod: hook, dump mode, replacement engine
+  HalallowKnight.cs        hook, dump mode, replacement engine
   HalallowKnight.csproj    net472 build, cross-platform game detection
   reword-config.json       the shipped wording
 tools/

@@ -30,7 +30,7 @@ namespace HalallowKnight
             return string.IsNullOrEmpty(_cfg.Version) ? AssemblyVersion : _cfg.Version;
         }
 
-        private const string AssemblyVersion = "0.2.0";
+        private const string AssemblyVersion = "1.0.0";
 
         private Config _cfg = new Config();
         private readonly HashSet<string> _seen = new HashSet<string>();

@@ -2,3 +2,5 @@ bin/
 obj/
 language-dump.tsv
 language-dump-all.tsv
+audio-log.tsv
+dist/
