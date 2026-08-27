@@ -1,4 +1,5 @@
 {
+  "version": "0.2.1",
   "dumpMode": false,
   "dumpAll": false,
   "exactOverrides": {
@@ -229,10 +230,6 @@
     "White Defender's dreams": "White Defender's memory",
     "Dream forgotten": "Memory forgotten",
     "Dreams revered": "Memories revered",
-    "Through dream I travel": "Through nightmare I travel",
-    "expanse of dream in past": "expanse of nightmare in past",
-    "In dreams... Born anew": "In nightmare... Born anew",
-    "the flame in dream": "the flame in nightmare",
     "lights darkest dream": "lights darkest night",
     "that dreams are made of": "that memories are made of",
     "a Dreamgate": "an Echogate",
@@ -250,6 +247,10 @@
     "unleash the Spirit": "unleash the Wisp",
     "a more powerful spirit": "a more powerful wisp",
     "The spirit of a dead ancestor": "The remnant of a dead ancestor",
-    "May their spirits rest in peace": "May they rest in peace"
+    "May their spirits rest in peace": "May they rest in peace",
+    "Through dream I travel": "From land to land I travel",
+    "the flame in dream": "the scarlet flame",
+    "In dreams... Born anew": "The flame endures... The child rises",
+    "The expanse of dream in past was split,<br>One realm now must stay apart,": "The Troupe's own heart in past was split,<br>One half now must stay apart,"
   }
 }

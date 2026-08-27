@@ -10,15 +10,27 @@ using Newtonsoft.Json;
 namespace HalallowKnight
 {
     /// <summary>
-    /// Rewords divine / "higher being" framing in displayed text.
+    /// Rewords religious and supernatural framing in the game's displayed text.
     /// Hooks ModHooks.LanguageGetHook and nothing else - no gameplay, scene, FSM or
-    /// networked state is touched, which is what keeps this HKMP-safe.
+    /// networked state is touched, so it cannot conflict with other mods.
     /// </summary>
     public class HalallowKnight : Mod
     {
         public HalallowKnight() : base("Halallow Knight") { }
 
-        public override string GetVersion() => "0.1.0";
+        /// <summary>
+        /// The wording lives in the config, and changes far more often than this assembly, so the
+        /// displayed version comes from the config where possible. That way a new wording list on
+        /// its own bumps the number shown on the title screen, with no rebuild - which is how you
+        /// confirm at a glance that the game picked up the version you meant.
+        /// </summary>
+        public override string GetVersion()
+        {
+            LoadConfig();
+            return string.IsNullOrEmpty(_cfg.Version) ? AssemblyVersion : _cfg.Version;
+        }
+
+        private const string AssemblyVersion = "0.2.0";
 
         private Config _cfg = new Config();
         private readonly HashSet<string> _seen = new HashSet<string>();
@@ -27,19 +39,17 @@ namespace HalallowKnight
         private string _dumpPath = "";
         private string _dumpAllPath = "";
         private bool _dumpedAll;
+        private bool _loaded;
 
         public override void Initialize()
         {
-            _dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? ".";
-            _dumpPath = Path.Combine(_dir, "language-dump.tsv");
-            _dumpAllPath = Path.Combine(_dir, "language-dump-all.tsv");
-
             LoadConfig();
 
             ModHooks.LanguageGetHook += OnLanguageGet;
 
-            Log($"Initialized. dumpMode={_cfg.DumpMode}, dumpAll={_cfg.DumpAll}, " +
-                $"exactOverrides={_cfg.ExactOverrides.Count}, terms={_cfg.TermReplacements.Count}");
+            Log($"Initialized. version={GetVersion()}, dumpMode={_cfg.DumpMode}, " +
+                $"dumpAll={_cfg.DumpAll}, exactOverrides={_cfg.ExactOverrides.Count}, " +
+                $"terms={_cfg.TermReplacements.Count}");
         }
 
         /// <summary>
@@ -167,8 +177,18 @@ namespace HalallowKnight
             return result;
         }
 
+        /// <summary>
+        /// Idempotent: GetVersion() may run before Initialize(), so either can be first.
+        /// </summary>
         private void LoadConfig()
         {
+            if (_loaded) return;
+            _loaded = true;
+
+            _dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? ".";
+            _dumpPath = Path.Combine(_dir, "language-dump.tsv");
+            _dumpAllPath = Path.Combine(_dir, "language-dump-all.tsv");
+
             string path = Path.Combine(_dir, "reword-config.json");
             try
             {
@@ -190,6 +210,10 @@ namespace HalallowKnight
 
     public class Config
     {
+        /// <summary>Shown on the title screen. Lets a config-only change bump the version.</summary>
+        [JsonProperty("version")]
+        public string Version = "";
+
         [JsonProperty("dumpMode")]
         public bool DumpMode = true;
 
