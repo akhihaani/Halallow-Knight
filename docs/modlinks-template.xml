@@ -1,0 +1,25 @@
+    <Manifest>
+        <Name>HalallowKnight</Name>
+        <DisplayName>Halallow Knight</DisplayName>
+        <Description>Rewords the game's religious and supernatural framing - gods, worship, magic, souls, charms, dreams and the dead - into neutral alternatives. Text only: no gameplay, scenes or game files are touched.</Description>
+        <Version>@VERSION@</Version>
+        <Link SHA256="@SHA@">
+            <![CDATA[@URL@]]>
+        </Link>
+        <Dependencies />
+        <Repository>
+            <![CDATA[https://github.com/akhihaani/Halallow-Knight]]>
+        </Repository>
+        <ReadMe>
+            <![CDATA[https://github.com/akhihaani/Halallow-Knight/raw/refs/heads/main/README.md]]>
+        </ReadMe>
+        <Issues>
+            <![CDATA[https://github.com/akhihaani/Halallow-Knight/issues]]>
+        </Issues>
+        <Tags>
+            <Tag>Cosmetic</Tag>
+        </Tags>
+        <Authors>
+            <Author>akhihaani</Author>
+        </Authors>
+    </Manifest>
